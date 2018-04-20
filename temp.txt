@@ -1,2 +1,0 @@
-Affinity Propagation: AP聚类算法
-community detection
