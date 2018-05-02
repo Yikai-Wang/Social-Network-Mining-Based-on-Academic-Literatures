@@ -4,13 +4,13 @@
 ## 项目要求
 ### 1. 设计聚类算法或社区挖掘算法，对数据集中的所有论文进行聚类，用可视化工具展现出各个领域（即社区，需注明对应的社区研究主题），并凸显各领域中最有影响力的学者
 Solution:
-	1. 根据title和abstract信息，对每篇文献进行向量化
+1. 根据title和abstract信息，对每篇文献进行向量化
 
-	2. 聚类
+2. 聚类
 
-	3. 打社区标签：根据聚类后的标签结果，将全部的文献按照类别划分，结合每个类的title和abstract信息，用tf-idf(finished)/LDA(on processing)对每一类的文本打标签。
+3. 打社区标签：根据聚类后的标签结果，将全部的文献按照类别划分，结合每个类的title和abstract信息，用tf-idf(finished)/LDA(on processing)对每一类的文本打标签。
 
-	4. 选出影响力高的学者：
+4. 选出影响力高的学者：
 
     4.1 根据引用关系计算每篇文献的影响力
 
@@ -19,16 +19,16 @@ Solution:
 ### 2. 对输入的任意一个学者，展现ego-network（参照ArnetMiner网站上的功能示例）
 
 Solution:
-	1. 对原始数据进行处理，得到如下结构的信息：
+1. 对原始数据进行处理，得到如下结构的信息：
 
     {'Author':{'Coauthor1':#cooperation,'Coauthor2':#cooperation}}
-	2. 对于给定作者，画出ego-network.
+2. 对于给定作者，画出ego-network.
 
 ### 3. 加分项参考
  利用DBLP和ArnetMiner提供的其它数据，对更多的学者间社会关系进行分析建模和预测，例如预测两个学者间的合作或引用关系，预测一个学者将来会在哪个刊物/会议上发表论文。
 
 Solution:
-	1.
+1.
 
 ## Appendix
 可视化工具：
