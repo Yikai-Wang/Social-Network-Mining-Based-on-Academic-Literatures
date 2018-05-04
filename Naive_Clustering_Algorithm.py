@@ -8,16 +8,30 @@ def load_pickle():
     pkl_file.close()
     return data1
 
-def write_in_pickle(data):
-    output = open('cluster_DBSCAN.pkl', 'wb')
+
+def write_in_pickle(data,name):
+    output = open('cluster_'+name+'.pkl', 'wb')
     pickle.dump(data, output)
     output.close()
 
+
+def list2dict(result,labels,name):
+    for_wooden = {}
+    for i in result:
+        for_wooden[i[0]]=i[1]
+    write_in_pickle(for_wooden,name)
+    print('Finish Data saving')
+    tmp = list(for_wooden.values())
+    tmp = np.array(tmp)
+    print('Number of each class:')
+    print(labels)
+    print([sum(tmp == i) for i in labels])
+
+
 class Clustering():
 
-    def __init__(self,data,n_clusters,max_iter):
+    def __init__(self,data,n_clusters):
         self.n_clusters = n_clusters
-        self.max_iter = max_iter
         self.id = []
         self.features = []
         for i in data:
@@ -31,53 +45,41 @@ class Clustering():
         return result
 
     def method_KMeans(self):
-        clf = KMeans(n_clusters=self.n_clusters,max_iter=self.max_iter)
+        clf = KMeans(n_clusters=self.n_clusters,max_iter=1000000)
         result = clf.fit(self.features)
         print('Finish result')
-        pred = result.fit_predict(self.features)
-        print('Finish pred')
-        return self.feature_to_result(pred)
+        return [self.feature_to_result(result.labels_), list(range(self.n_clusters))]
 
     def method_DBSCAN(self):
         clf = DBSCAN(min_samples=10000,eps=1,n_jobs=-1)
         result = clf.fit(self.features)
         print('Finish result')
-        pred = result.fit_predict(self.features)
-        print('Finish pred')
-        return self.feature_to_result(pred)
+        return self.feature_to_result(result.labels_)
 
     def method_MeanShift(self):
         clf = MeanShift(n_jobs=-1)
         result = clf.fit(self.features)
         print('Finish result')
-        pred = result.fit_predict(self.features)
-        print('Finish pred')
-        return self.feature_to_result(pred)
+        return [self.feature_to_result(result.labels_), list(set(result.labels_))]
 
     def method_Birch(self):
         clf = Birch(n_clusters=self.n_clusters)
         result = clf.fit(self.features)
         print('Finish result')
-        pred = result.fit_predict(self.features)
-        print('Finish pred')
-        return self.feature_to_result(pred)
+        return [self.feature_to_result(result.labels_), list(range(self.n_clusters))]
 
 
 a = load_pickle()
 data = [[k,(v[0]+v[1])/2] if np.sum(v[1]) != 0 else [k, v[0]] for k,v in a.items()]
 print('Finish Data preprocessing')
-c = Clustering(data,10,100000)
-# result = c.method_KMeans()
-#result = c.method_DBSCAN()
-result = c.method_MeanShift()
-for_wooden = {}
-for i in result:
-    for_wooden[i[0]]=i[1]
-write_in_pickle(for_wooden)
-print('Finish Data saving')
-tmp = list(for_wooden.values())
-tmp = np.array(tmp)
-print([sum(tmp==i) for i in range(10)])
-# result = c.method_DBSCAN()
-# c.method_MeanShift()
-# c.method_Birch()
+c = Clustering(data,10)
+# [result, labels] = c.method_KMeans()
+# list2dict(result, labels,'KMeans')
+# [result, labels] = c.method_DBSCAN()
+# list2dict(result, labels,'DBSCAN')
+# [result, labels] = c.method_MeanShift()
+# list2dict(result, labels,'MeanShift')
+# [result, labels] = c.method_Birch()
+# list2dict(result, labels,'Birch')
+
+

@@ -6,7 +6,25 @@
 Solution:
 1. 根据title和abstract信息，对每篇文献进行向量化
 
-2. 聚类
+2. 利用聚类方法将文献分成不同的领域：
+
+   K-means：（10类）
+
+   1. 100000 iterations
+
+      [2461, 12727, 1530, 35584, 17475, 818452, 7443, 28980, 27894, 47454]
+
+   2. 1000000 iterations
+
+      
+
+   DBSCAN(不收敛)
+
+   MeanShift
+
+   Birch
+
+   **TODO**:针对大量样本的聚类方法
 
 3. 打社区标签：根据聚类后的标签结果，将全部的文献按照类别划分，结合每个类的title和abstract信息，用tf-idf(finished)/LDA(on processing)对每一类的文本打标签。
 
@@ -47,7 +65,7 @@ http://blog.csdn.net/zdw12242/article/details/8687644
 
 爬虫Cookie：http://blog.csdn.net/zhyh1435589631/article/details/51307915 
 
- 
+
 			 http://www.nowamagic.net/academy/detail/1302882 
 
 
