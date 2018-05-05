@@ -48,6 +48,10 @@ Solution:
 Solution:
 1.
 
+可以用的：
+
+[Graph Embedding Methods](https://github.com/palash1992/GEM)
+
 ## Appendix
 可视化工具：
 Pajek:http://pajek.imfm.si 
