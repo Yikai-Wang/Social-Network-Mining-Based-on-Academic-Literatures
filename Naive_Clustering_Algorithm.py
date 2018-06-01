@@ -3,14 +3,14 @@ from sklearn.cluster import KMeans,MeanShift,DBSCAN,Birch
 import pickle
 
 def load_pickle():
-    pkl_file = open('data1.pkl', 'rb')
+    pkl_file = open('wordvec.pkl', 'rb')
     data1 = pickle.load(pkl_file)
     pkl_file.close()
     return data1
 
 
 def write_in_pickle(data,name):
-    output = open('cluster_'+name+'.pkl', 'wb')
+    output = open('cluster_'+name+'_nrl.pkl', 'wb')
     pickle.dump(data, output)
     output.close()
 
@@ -51,7 +51,7 @@ class Clustering():
         return [self.feature_to_result(result.labels_), list(range(self.n_clusters))]
 
     def method_DBSCAN(self):
-        clf = DBSCAN(min_samples=10000,eps=1,n_jobs=-1)
+        clf = DBSCAN(min_samples=5000,eps=1,n_jobs=-1)
         result = clf.fit(self.features)
         print('Finish result')
         return self.feature_to_result(result.labels_)
@@ -69,17 +69,19 @@ class Clustering():
         return [self.feature_to_result(result.labels_), list(range(self.n_clusters))]
 
 
-a = load_pickle()
-data = [[k,(v[0]+v[1])/2] if np.sum(v[1]) != 0 else [k, v[0]] for k,v in a.items()]
+# a = load_pickle()
+# data = [[k,(v[0]+v[1])/2] if np.sum(v[1]) != 0 else [k, v[0]] for k,v in a.items()]
+a = np.load('model_line.npy')
+data = [[i,a[i]] for i in range(len(a))]
 print('Finish Data preprocessing')
-c = Clustering(data,10)
+c = Clustering(data,6)
 # [result, labels] = c.method_KMeans()
 # list2dict(result, labels,'KMeans')
-# [result, labels] = c.method_DBSCAN()
-# list2dict(result, labels,'DBSCAN')
 # [result, labels] = c.method_MeanShift()
 # list2dict(result, labels,'MeanShift')
-# [result, labels] = c.method_Birch()
-# list2dict(result, labels,'Birch')
+[result, labels] = c.method_Birch()
+list2dict(result, labels,'Birch')
+# [result, labels] = c.method_DBSCAN()
+# list2dict(result, labels,'DBSCAN')
 
 
