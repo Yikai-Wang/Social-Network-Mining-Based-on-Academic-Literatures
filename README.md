@@ -1,4 +1,4 @@
-# Social-Network-Mining-Based-on-Academic-Literatures 基于学术文献的社交网络挖掘
+# 基于学术文献的社交网络挖掘
 ## 数据集
 [DBLP](http://dblp.org/) 是国际上最知名的收录计算机/IT领域学术文献的网址，其收录的数据包括论文的标题、作者列表、发表时间、发表刊物/会议等信息。清华大学的学术搜索网站[ArnetMiner](https://cn.aminer.org/)基于DBLP和ACM等数据源收集了更丰富的文献数据，其中就有[文献的引用数据集](https://cn.aminer.org/citation)，其中包含了几十万篇计算机学术论文的相关数据，为txt格式，需自行解析。
 ## 项目要求
