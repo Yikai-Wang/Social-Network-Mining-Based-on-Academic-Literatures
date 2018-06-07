@@ -14,7 +14,7 @@ Solution:
 
    Birch
 
-3. 打社区标签：根据聚类后的标签结果，将全部的文献按照类别划分，结合每个类的title和abstract信息，用tf-idf(finished)/LDA(on processing)对每一类的文本打标签。
+3. 打社区标签：根据聚类后的标签结果，将全部的文献按照类别划分，结合每个类的title和abstract信息，用LDA对每一类的文本打标签。
 
 4. 选出影响力高的学者：
 
@@ -22,7 +22,7 @@ Solution:
 
     4.2 对每个作者发表过的全部文章的影响力进行加和作为改学者的影响力
 
-**TODO** ：展示结果
+已经选出影响力最高的20个人，并绘制他们和其邻居（coauthor）的网络。**TODO** ：Highlight影响力最高的20个人。
 
 ### 2. 对输入的任意一个学者，展现ego-network（参照ArnetMiner网站上的功能示例）
 
