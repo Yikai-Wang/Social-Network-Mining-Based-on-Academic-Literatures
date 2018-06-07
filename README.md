@@ -76,3 +76,9 @@ http://blog.csdn.net/zdw12242/article/details/8687644
 
 爬虫防封技巧：http://blog.csdn.net/zhanghaipeng1989/article/details/40828377 
 
+## 参考文献
+
+【1】HARP: Hierarchical Representation Learning for Networks
+
+【2】metapath2vec: Scalable Representation Learning for Heterogeneous Networks
+
