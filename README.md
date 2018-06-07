@@ -19,14 +19,19 @@ Solution:
 处理后效果（没用到之前的分类信息）：
 Topic 0:
 based systems paper user information
+
 Topic 1:
 performance parallel memory distributed applications
+
 Topic 2:
 language based model text using
+
 Topic 3:
 learning classification data training feature
+
 Topic 4:
 algorithm model time problem algorithms
+
 Topic 5:
 data query mining database queries
 
@@ -35,6 +40,7 @@ data query mining database queries
     4.1 根据引用关系计算每篇文献的影响力
 
     4.2 对每个作者发表过的全部文章的影响力进行加和作为改学者的影响力
+    
 对应文件见 render.html
 
 已经选出影响力最高的20个人，并绘制他们和其邻居（coauthor）的网络。**TODO** ：Highlight影响力最高的20个人。
