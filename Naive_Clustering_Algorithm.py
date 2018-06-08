@@ -1,6 +1,7 @@
 import numpy as np
 from sklearn.cluster import KMeans,MeanShift,DBSCAN,Birch
 import pickle
+from argparse import ArgumentParser,ArgumentDefaultsHelpFormatter
 
 def load_pickle():
     pkl_file = open('wordvec.pkl', 'rb')
@@ -68,20 +69,42 @@ class Clustering():
         print('Finish result')
         return [self.feature_to_result(result.labels_), list(range(self.n_clusters))]
 
-
-# a = load_pickle()
-# data = [[k,(v[0]+v[1])/2] if np.sum(v[1]) != 0 else [k, v[0]] for k,v in a.items()]
-a = np.load('model_line.npy')
-data = [[i,a[i]] for i in range(len(a))]
+parser = ArgumentParser('NCA',
+                            formatter_class=ArgumentDefaultsHelpFormatter,
+                            conflict_handler='resolve')
+parser.add_argument('--model', default='line',
+                        help='Embedding model to use. Could be deepwalk,node2vec,line,metapath2vec,')
+parser.add_argument('--mixture', default=False,
+                        help='Using word2vec or not.')
+parser.add_argument('--KMeans', default=True,
+                        help='Using KMeans or not.')
+parser.add_argument('--Birch', default=True,
+                        help='Using Birch or not.')
+parser.add_argument('--classes', default=6,
+                        help='Number of classes.')
+args = parser.parse_args()
+if args.model == 'word2vec':
+    w2v = load_pickle()
+    data = [[k,(v[0]+v[1])/2] if np.sum(v[1]) != 0 else [k, v[0]] for k,v in w2v.items()]
+else:
+    n2v = np.load('model_'+args.model+'.npy')
+    data = [[i,n2v[i]] for i in range(len(n2v))]
+if args.mixture:
+    args.model += '_word2vec'
+    w2v = load_pickle()
+    mix_data = []
+    for i in range(len(data)):
+        tmp = data[i][1]
+        tmp.append((w2v[i][0]+w2v[i][1])/2)
+        mix_data.append([i,tmp])
+    data = mix_data
 print('Finish Data preprocessing')
-c = Clustering(data,6)
-# [result, labels] = c.method_KMeans()
-# list2dict(result, labels,'KMeans')
-# [result, labels] = c.method_MeanShift()
-# list2dict(result, labels,'MeanShift')
-[result, labels] = c.method_Birch()
-list2dict(result, labels,'Birch')
-# [result, labels] = c.method_DBSCAN()
-# list2dict(result, labels,'DBSCAN')
+cluster = Clustering(data,args.classes)
+if args.KMeans==True:
+    [result, labels] = cluster.method_KMeans()
+    list2dict(result, labels,'KMeans_'+args.model)
+if args.Birch==True:
+    [result, labels] = cluster.method_Birch()
+    list2dict(result, labels,'Birch'+args.model)
 
 
