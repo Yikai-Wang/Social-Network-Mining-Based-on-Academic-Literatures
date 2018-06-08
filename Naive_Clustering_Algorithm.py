@@ -95,7 +95,7 @@ if args.mixture:
     mix_data = []
     for i in range(len(data)):
         tmp = data[i][1]
-        tmp.append((w2v[i][0]+w2v[i][1])/2)
+        tmp = np.append(tmp,(w2v[i][0]+w2v[i][1])/2)
         mix_data.append([i,tmp])
     data = mix_data
 print('Finish Data preprocessing')
