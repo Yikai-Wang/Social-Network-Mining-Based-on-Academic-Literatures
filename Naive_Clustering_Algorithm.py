@@ -85,7 +85,8 @@ parser.add_argument('--classes', default=6,
 args = parser.parse_args()
 if args.model == 'word2vec':
     w2v = load_pickle()
-    data = [[k,(v[0]+v[1])/2] if np.sum(v[1]) != 0 else [k, v[0]] for k,v in w2v.items()]
+    #data = [[k,(v[0]+v[1])/2] if np.sum(v[1]) != 0 else [k, v[0]] for k,v in w2v.items()]
+    data = [[k,v]for k,v in w2v.items()]
 else:
     n2v = np.load('model_'+args.model+'.npy')
     data = [[i,n2v[i]] for i in range(len(n2v))]
@@ -95,7 +96,7 @@ if args.mixture:
     mix_data = []
     for i in range(len(data)):
         tmp = data[i][1]
-        tmp = np.append(tmp,(w2v[i][0]+w2v[i][1])/2)
+        tmp = np.append(tmp,w2v)
         mix_data.append([i,tmp])
     data = mix_data
 print('Finish Data preprocessing')
