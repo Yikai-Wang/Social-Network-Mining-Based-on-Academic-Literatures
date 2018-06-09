@@ -24,7 +24,6 @@ for pa in papers:
 	nump += 1
 for pa in papers:
 	tmp_id ='v'+paper2num[pa['id']]
-	nump += 1
 	paper2author[tmp_id] = []
 	authors = pa['authors']
 	for au in authors:
@@ -47,9 +46,9 @@ for pa in papers:
 			tmp_re = 'v'+paper2num[re]
 			paper2refer['v'+paper2num[pa['id']]].append(tmp_re)
 
-numwalks = 1000
-walklength = 100
-outfilename = 'output.dbis.w1000.l100.txt'
+numwalks = 40
+walklength = 10
+outfilename = 'output.dbis.w40.l10.txt'
 outfile = open(outfilename, 'w')
 wyk = 0
 for paper in paper2author.keys():
