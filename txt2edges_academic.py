@@ -1,3 +1,8 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+@author: Yikai Wang
+"""
 dp_conf = ['PPOPP', 'PACT', 'IPDPS', 'ICPP']
 ml_conf = ['IJCAI', 'ICML', 'NIPS']
 dm_conf = ['ICDE', 'SIGMOD','KDD' , 'ICDM']

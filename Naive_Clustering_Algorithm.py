@@ -1,3 +1,8 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+@author: Yikai Wang
+"""
 import numpy as np
 from sklearn.cluster import KMeans,MeanShift,DBSCAN,Birch
 import pickle
