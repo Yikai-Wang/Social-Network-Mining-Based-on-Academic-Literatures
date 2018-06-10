@@ -8,14 +8,12 @@ def load_txt(filename):
             if not tmp:
                 break
             tmp = tmp.split(' ')
-            try:
-                k = int(tmp[0][1:])
+            if tmp[0][0]=='a':
+                k = tmp[0][1:]
                 v = []
                 for i in range(1,len(tmp)-1):
                     v.append(np.float(tmp[i]))
                 txt[k] = v
-            except:
-                pass
     return txt
 
 def write_in_pickle(data, path):
@@ -49,8 +47,8 @@ def load_pickle(path):
 #                     v.append(np.float(tmp[i]))
 #                 txt['conf'][k] = v
 #     return txt
-txt = load_txt('task3cp.vector.txt')
+txt = load_txt('task3re.vector.txt')
 # result = np.array([])
 # for k,v in txt.items():
 #     np.append(result,np.array([k,v]))
-write_in_pickle(txt,'task3cp.pkl')
+write_in_pickle(txt,'task3re.pkl')
