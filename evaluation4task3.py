@@ -177,9 +177,9 @@ if args.task=='cp' or args.task == 'all':
                             nonexist[authors2num[new_authors[j]]][authors2num[new_authors[i]]]=0
                             missing_edges.append([new_authors[i],new_authors[j]])
     print('Finished Loading!')
-    if args.AUC:
+    if args.AUC!=False:
         AUC(task='cp',nonexist=nonexist,missing_edges=missing_edges,authors=chosen_authors,times=5000,node_vector=vectors)
-    if args.p:
+    if args.p!=False:
         Precision(task='cp',nonexist=nonexist,authors=chosen_authors,L=5000,node_vector=vectors)
 if args.task=='re' or args.task == 'all':
     vectors = load_pickle('data/task3re.pkl')
@@ -211,9 +211,9 @@ if args.task=='re' or args.task == 'all':
                     nonexist[authors2num[new_authors[i]]][authors2num[re_authors[j]]]=0
                     missing_edges.append([new_authors[i],re_authors[j]])
     print('Finished Loading!')
-    if args.AUC:
+    if args.AUC!=False:
         AUC(task='re',nonexist=nonexist,missing_edges=missing_edges,authors=chosen_authors,times=5000,node_vector=vectors)
-    if args.p:
+    if args.p!=False:
         Precision(task='re',nonexist=nonexist,authors=chosen_authors,L=5000,node_vector=vectors)
 if args.task =='conf' or args.task == 'all':
     CONFS = ['PPOPP', 'PACT', 'IPDPS', 'ICPP',
@@ -243,10 +243,10 @@ if args.task =='conf' or args.task == 'all':
                         nonexist[authors2num[tmp_au]][i] = 0
                         missing_edges.append([tmp_au,CONFS[i]])
     print('Finished Loading!')
-    if args.AUC:
+    if args.AUC!=False:
         AUC(task='conf', nonexist=nonexist,authors=chosen_authors, times=5000,
         node_vector=vectors,confs=CONFS,missing_edges=missing_edges)
-    if args.p:
+    if args.p!=False:
         Precision(task='conf', nonexist=nonexist,authors=chosen_authors, L=5000,
               node_vector=vectors,confs=CONFS)
 
