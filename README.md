@@ -91,6 +91,12 @@ Solution:
 
 （添加于6.4：已经可以做到的是可以对固定年限前的学者利用网络结构进行向量化，如何对时间序列进行预测？）
 
+学者合作AUC：0.7058
+
+学者引用AUC:  0.675
+
+学者会议AUC: 
+
 可以用的：
 
 [Graph Embedding Methods](https://github.com/palash1992/GEM)
