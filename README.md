@@ -14,6 +14,27 @@ Solution:
 
    Birch
 
+   各模型聚类结果与正确率：
+
+   | Model                        | 0    | 1    | 2    | 3    | 4    | 5    | accuracy            |
+   | ---------------------------- | ---- | ---- | ---- | ---- | ---- | ---- | ------------------- |
+   | Birch Deepwalk               | Nl   | Ml   | Ed   | dm   | dp   | os   | 0.5384945472839999  |
+   | KMeans  Line                 | dp   | Os   | nl   | Ed   | ml   | dm   | 0.5043577336825439  |
+   | Birch Deepwalk word2vec      | Nl   | Os   | dm   | Dp   | Ml   | Ed   | 0.5223953478048564  |
+   | Birch Line                   | Ml   | Nl   | dm   | Ed   | Dp   | Os   | 0.38818602861751084 |
+   | Birch Line word2vec          | Nl   | Ml   | Ed   | Dp   | Dm   | os   | 0.3677364939849958  |
+   | Birch metapath2vec           | Ml   | Nl   | Ed   | Os   | Dm   | Dp   | 0.5968985365709297  |
+   | Birch metapath2vec word2vec  | Nl   | Os   | dm   | Ed   | ml   | Dp   | 0.5811544664920614  |
+   | KMeans deepwalk              | dp   | Ed   | Ml   | dm   | Os   | Nl   | 0.5308888592947723  |
+   | Kmeans deepwalk word2vec     | Nl   | Os   | Dm   | ed   | dp   | Ml   | 0.5225877095633388  |
+   | Kmeans line word2vec         | Ml   | Ed   | dm   | Nl   | dp   | Os   | 0.5120670010801852  |
+   | Kmeans metapath2vec          | Dm   | Ml   | Ed   | Nl   | Dp   | os   | 0.6638552255811545  |
+   | Kmeans metapath2vec word2vec | Dm   | nl   | Ed   | dp   | Os   | Ml   | 0.4987644456282091  |
+   | Birch word2vec               | Ml   | Os   | Ed   | dp   | Nl   | Dm   | 0.45135467069146656 |
+   | Kmeans word2vec              | os   | Nl   | ml   | ed   | Dp   | dm   | 0.4425208268596203  |
+
+   
+
 3. 打社区标签：根据聚类后的标签结果，将全部的文献按照类别划分，结合每个类的title和abstract信息，用LDA对每一类的文本打标签。
 
 处理后效果（没用到之前的分类信息）：
@@ -40,7 +61,7 @@ data query mining database queries
     4.1 根据引用关系计算每篇文献的影响力
 
     4.2 对每个作者发表过的全部文章的影响力进行加和作为改学者的影响力
-    
+
 对应文件见 render.html
 
 已经选出影响力最高的20个人，并绘制他们和其邻居（coauthor）的网络。**TODO** ：Highlight影响力最高的20个人。

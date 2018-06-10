@@ -38,7 +38,7 @@ def load_txt(filename):
             txt[tmp[0]] = tmp[1]
     return txt
 
-result = load_pickle('KMeans_line.pkl')
+result = load_pickle('cluster_KMeans_word2vec_nrl.pkl')
 id2num = load_txt('id2num.txt')
 true_label = {}
 for k,v in confs.items():
@@ -58,19 +58,22 @@ for k,v in result.items():
 
 print(predict)
 num2str = dict()
-num2str[0]='dp'
-num2str[1]='dp'
-num2str[2]='nl'
-num2str[3]='ml'
-num2str[4]='ml'
+num2str[0]='os'
+num2str[1]='nl'
+num2str[2]='ml'
+num2str[3]='ed'
+num2str[4]='dp'
 num2str[5]='dm'
 prop = {}
 for k in confs.keys():
   prop[k] = [0,0]
 for k,v in true_label.items():
     prop[v][1] += 1
-    if num2str[result[int(k)]]==v:
-        prop[v][0] += 1
+    try:
+        if num2str[result[int(k)]]==v:
+            prop[v][0] += 1
+    except:
+        pass
 num0 = 0
 num1 = 0
 for k,v in prop.items():
