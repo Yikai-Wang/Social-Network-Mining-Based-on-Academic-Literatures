@@ -1,12 +1,12 @@
 import random
 import numpy as np
-
+import pickle
 def AUC(exist_edges,missing_edges,nodes_number,times,node_vector):
 	nonexist_edges = []
 	tmp = exist_edges + missing_edges
 	for i in range(nodes_number-1):
 		for j in range(i+1, nodes_number):
-			if [i j] not in tmp:
+			if [i,j] not in tmp:
 				nonexist_edges.append([i,j])
 	n1 = 0
 	n2 = 0
@@ -35,3 +35,9 @@ def Precision(exist_edges,missing_edges,nodes_number,L,node_vector):
 			Lr += 1
 	return Lr/L
 
+def load_pickle(path):
+    pkl_file = open(path, 'rb')
+    data = pickle.load(pkl_file)
+    pkl_file.close()
+    return data
+vectors = load_pickle('data/task3cp.pkl')
