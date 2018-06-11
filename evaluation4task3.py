@@ -26,8 +26,8 @@ def AUC(task,nonexist,authors,times,node_vector,missing_edges,confs=None):
                         nonexist_edge = [authors[tmp1],authors[tmp2]]
                 if nonexist_edge != []:
                     break
-            score_miss = np.sum(np.array(node_vector[missing_edge[0]])*np.array(node_vector[missing_edge[1]]))
-            score_none = np.sum(np.array(node_vector[nonexist_edge[0]])*np.array(node_vector[nonexist_edge[1]]))
+            score_miss = np.sum(np.array(node_vector[missing_edge[0]])*np.array(node_vector[missing_edge[1]]))/(np.sum(np.array(node_vector[missing_edge[0]])**2)*np.sum(np.array(node_vector[missing_edge[1]])**2))**0.5
+            score_none = np.sum(np.array(node_vector[nonexist_edge[0]])*np.array(node_vector[nonexist_edge[1]]))/(np.sum(np.array(node_vector[nonexist_edge[0]])**2)*np.sum(np.array(node_vector[nonexist_edge[1]])**2))**0.5
             if score_miss > score_none:
                 n1 += 1
             elif score_miss == score_none:
@@ -51,8 +51,8 @@ def AUC(task,nonexist,authors,times,node_vector,missing_edges,confs=None):
                         nonexist_edge = [authors[tmp1], confs[tmp2]]
                 if nonexist_edge!=[]:
                     break
-            score_miss = np.sum(np.array(node_vector['author'][missing_edge[0]])*np.array(node_vector['conf'][missing_edge[1]]))
-            score_none = np.sum(np.array(node_vector['author'][nonexist_edge[0]])*np.array(node_vector['conf'][nonexist_edge[1]]))
+            score_miss = np.sum(np.array(node_vector['author'][missing_edge[0]])*np.array(node_vector['conf'][missing_edge[1]]))/(np.sum(np.array(node_vector['author'][missing_edge[0]])**2)*np.sum(np.array(node_vector['conf'][missing_edge[1]])**2))**0.5
+            score_none = np.sum(np.array(node_vector['author'][nonexist_edge[0]])*np.array(node_vector['conf'][nonexist_edge[1]]))/(np.sum(np.array(node_vector['author'][nonexist_edge[0]])**2)*np.sum(np.array(node_vector['conf'][nonexist_edge[1]])**2))**0.5
             if score_miss > score_none:
                 n1 += 1
             elif score_miss == score_none:
@@ -63,11 +63,19 @@ def AUC(task,nonexist,authors,times,node_vector,missing_edges,confs=None):
 
 def Precision(task,nonexist,authors,L,node_vector,confs=None):
     if task == 'cp':
+        k = 0
         non_observed_edges = []
         for i in range(len(authors)-1):
             for j in range(i+1, len(authors)):
-                score = np.sum(np.array(node_vector[authors[i]])*np.array(node_vector[authors[j]]))
-                non_observed_edges.append([[i,j],score])
+                if k < L:
+                    score = np.sum(np.array(node_vector[authors[i]])*np.array(node_vector[authors[j]]))/(np.sum(np.array(node_vector[authors[i]])**2)*np.sum(np.array(node_vector[authors[j]])**2))**0.5
+                    non_observed_edges.append([[i,j],score])
+                    k += 1
+                else:
+                    non_observed_edges.sort(key=lambda x: -x[1])
+                    score = np.sum(np.array(node_vector[authors[i]]) * np.array(node_vector[authors[j]]))/(np.sum(np.array(node_vector[authors[i]])**2)*np.sum(np.array(node_vector[authors[j]])**2))**0.5
+                    if score > non_observed_edges[-1][1]:
+                        non_observed_edges[-1] = [[i,j],score]
         non_observed_edges.sort(key= lambda x: -x[1])
         Lr = 0
         for i in range(L):
@@ -77,12 +85,20 @@ def Precision(task,nonexist,authors,L,node_vector,confs=None):
         print('Task cp eval Precision: '+str(result))
         return result
     if task == 're':
+        k = 0
         non_observed_edges = []
         for i in range(len(authors)):
             for j in range(len(authors)):
                 if i!=j:
-                    score = np.sum(np.array(node_vector[authors[i]])*np.array(node_vector[authors[j]]))
-                    non_observed_edges.append([[i,j],score])
+                    if k<L:
+                        score = np.sum(np.array(node_vector[authors[i]])*np.array(node_vector[authors[j]]))/(np.sum(np.array(node_vector[authors[i]])**2)*np.sum(np.array(node_vector[authors[j]])**2))**0.5
+                        non_observed_edges.append([[i,j],score])
+                        k += 1
+                    else:
+                        non_observed_edges.sort(key=lambda x: -x[1])
+                        score = np.sum(np.array(node_vector[authors[i]]) * np.array(node_vector[authors[j]]))/(np.sum(np.array(node_vector[authors[i]])**2)*np.sum(np.array(node_vector[authors[j]])**2))**0.5
+                        if score > non_observed_edges[-1][1]:
+                            non_observed_edges[-1] = [[i, j], score]
         non_observed_edges.sort(key= lambda x: -x[1])
         Lr = 0
         for i in range(L):
@@ -92,11 +108,19 @@ def Precision(task,nonexist,authors,L,node_vector,confs=None):
         print('Task re eval Precision: '+str(result))
         return result
     if task =='conf':
+        k = 0
         non_observed_edges = []
         for i in range(len(authors)):
             for j in range(len(confs)):
-                score = np.sum(np.array(node_vector['authors'][authors[i]])*np.array(node_vector['confs'][confs[j]]))
-                non_observed_edges.append([[i,j],score])
+                if k<L:
+                    score = np.sum(np.array(node_vector['authors'][authors[i]])*np.array(node_vector['confs'][confs[j]]))/(np.sum(np.array(node_vector['authors'][authors[i]])**2)*np.sum(np.array(node_vector['confs'][confs[j]])**2))**0.5
+                    non_observed_edges.append([[i,j],score])
+                    k += 1
+                else:
+                    non_observed_edges.sort(key=lambda x: -x[1])
+                    score = np.sum(np.array(node_vector['authors'][authors[i]]) * np.array(node_vector['confs'][confs[j]]))/(np.sum(np.array(node_vector['authors'][authors[i]])**2)*np.sum(np.array(node_vector['confs'][confs[j]])**2))**0.5
+                    if score > non_observed_edges[-1][1]:
+                        non_observed_edges[-1] = [[i,j],score]
         non_observed_edges.sort(key= lambda x: -x[1])
         Lr = 0
         for i in range(L):
@@ -176,11 +200,11 @@ if args.task=='cp' or args.task == 'all':
                             nonexist[authors2num[new_authors[i]]][authors2num[new_authors[j]]]=0
                             nonexist[authors2num[new_authors[j]]][authors2num[new_authors[i]]]=0
                             missing_edges.append([new_authors[i],new_authors[j]])
-    print('Finished Loading!')
+    print('Finished Loading!Sample numbers: '+str(len(missing_edges)))
     if args.AUC!=False:
-        AUC(task='cp',nonexist=nonexist,missing_edges=missing_edges,authors=chosen_authors,times=5000,node_vector=vectors)
+        AUC(task='cp',nonexist=nonexist,missing_edges=missing_edges,authors=chosen_authors,times=len(missing_edges),node_vector=vectors)
     if args.p!=False:
-        Precision(task='cp',nonexist=nonexist,authors=chosen_authors,L=5000,node_vector=vectors)
+        Precision(task='cp',nonexist=nonexist,authors=chosen_authors,L=len(missing_edges),node_vector=vectors)
 if args.task=='re' or args.task == 'all':
     vectors = load_pickle('data/task3re.pkl')
     valid_id = load_txt('data/valid_id_4task3.txt')
@@ -210,11 +234,11 @@ if args.task=='re' or args.task == 'all':
                 for j in range(len(re_authors)):
                     nonexist[authors2num[new_authors[i]]][authors2num[re_authors[j]]]=0
                     missing_edges.append([new_authors[i],re_authors[j]])
-    print('Finished Loading!')
+    print('Finished Loading!Sample numbers: '+str(len(missing_edges)))
     if args.AUC!=False:
-        AUC(task='re',nonexist=nonexist,missing_edges=missing_edges,authors=chosen_authors,times=5000,node_vector=vectors)
+        AUC(task='re',nonexist=nonexist,missing_edges=missing_edges,authors=chosen_authors,times=len(missing_edges),node_vector=vectors)
     if args.p!=False:
-        Precision(task='re',nonexist=nonexist,authors=chosen_authors,L=5000,node_vector=vectors)
+        Precision(task='re',nonexist=nonexist,authors=chosen_authors,L=len(missing_edges),node_vector=vectors)
 if args.task =='conf' or args.task == 'all':
     CONFS = ['PPOPP', 'PACT', 'IPDPS', 'ICPP',
          'IJCAI', 'ICML', 'NIPS',
@@ -242,12 +266,12 @@ if args.task =='conf' or args.task == 'all':
                     if tmp_au in chosen_authors:
                         nonexist[authors2num[tmp_au]][i] = 0
                         missing_edges.append([tmp_au,CONFS[i]])
-    print('Finished Loading!')
+    print('Finished Loading!Sample numbers: '+str(len(missing_edges)))
     if args.AUC!=False:
-        AUC(task='conf', nonexist=nonexist,authors=chosen_authors, times=5000,
+        AUC(task='conf', nonexist=nonexist,authors=chosen_authors, times=len(missing_edges),
         node_vector=vectors,confs=CONFS,missing_edges=missing_edges)
     if args.p!=False:
-        Precision(task='conf', nonexist=nonexist,authors=chosen_authors, L=5000,
+        Precision(task='conf', nonexist=nonexist,authors=chosen_authors, L=len(missing_edges),
               node_vector=vectors,confs=CONFS)
 
 
