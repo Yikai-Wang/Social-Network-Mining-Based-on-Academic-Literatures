@@ -1,166 +1,500 @@
-\documentclass[11pt,letterpaper,twoside,reqno,nosumlimits]{amsart}
 
+\documentclass[conference]{IEEEtran}
+%\usepackage{cite}
+% cite.sty was written by Donald Arseneau
+% V1.6 and later of IEEEtran pre-defines the format of the cite.sty package
+% \cite{} output to follow that of the IEEE. Loading the cite package will
+% result in citation numbers being automatically sorted and properly
+% "compressed/ranged". e.g., [1], [9], [2], [7], [5], [6] without using
+% cite.sty will become [1], [2], [5]--[7], [9] using cite.sty. cite.sty's
+% \cite will automatically add leading space, if needed. Use cite.sty's
+% noadjust option (cite.sty V3.8 and later) if you want to turn this off
+% such as if a citation ever needs to be enclosed in parenthesis.
+% cite.sty is already installed on most LaTeX systems. Be sure and use
+% version 5.0 (2009-03-20) and later if using hyperref.sty.
+% The latest version can be obtained at:
+% http://www.ctan.org/pkg/cite
+% The documentation is contained in the cite.sty file itself.
 
-\synctex=1
+\ifCLASSINFOpdf
+   \usepackage[pdftex]{graphicx}
+\else
+  \usepackage[dvips]{graphicx}
 
-\usepackage{fixltx2e}
-\usepackage{amsmath,amsfonts,amsbsy,amsgen,amscd,mathrsfs,amssymb,amsthm}
-\usepackage{mathtools}
-
-\mathtoolsset{showonlyrefs}
-\allowdisplaybreaks
-
-\usepackage[usenames,dvipsnames]{xcolor}
-\usepackage{graphicx}
-\graphicspath{{art/}}
-
-\usepackage{tikz}
-\usepackage{microtype}
-
-\usepackage{fancyhdr}
-
-\usepackage{enumitem}
-
-\usepackage{url}
-\usepackage[font=small,margin=0.25in,labelfont={sc},labelsep={colon}]{caption}
-\usepackage{float}
-
-%\DeclareRobustCommand{\gobblefive}[5]{}
-%\newcommand*{\SkipTocEntry}{\addtocontents{toc}{\gobblefive}}
-
-
-\definecolor{dark-gray}{gray}{0.3}
-\definecolor{dkgray}{rgb}{.4,.4,.4}
-\definecolor{dkblue}{rgb}{0,0,.5}
-\definecolor{medblue}{rgb}{0,0,.75}
-\definecolor{rust}{rgb}{0.5,0.1,0.1}
-
-\usepackage[colorlinks=true]{hyperref}
-
-\hypersetup{urlcolor=rust}
-\hypersetup{citecolor=dkblue}
-\hypersetup{linkcolor=dkblue}
-
-
-
-\usepackage[utf8]{inputenc}
-\usepackage[T1]{fontenc}
-
-\usepackage{fourier}
-\usepackage{bm}
-
-
-\evensidemargin=0in
-\oddsidemargin=0in
-\textwidth=6.5in
-\topmargin=-0.33in
-\headheight=0.25in
-\textheight=9in
-
-\hyphenation{Ra-de-mach-er}
-
-\allowdisplaybreaks
-\newcommand\numberthis{\addtocounter{equation}{1}\tag{\theequation}}
-
-%%%%%%%%%
-%%%%%%%%%
-\def\lsb{\left[}
-\def\rsb{\right]}
-\def\lb{\left(}
-\def\rb{\right)}
-\def\lab{\left|}
-\def\rab{\right|}
-\def\ln{\left\|}
-\def\rn{\right\|}
-\def\lcb{\left\{}
-\def\rcb{\right\}}
-\def\la{\langle}
-\def\ra{\rangle}
-%%%%%%%%%
-\DeclareMathAlphabet{\pazocal}{OMS}{zplm}{m}{n}
-\def\bzero{\bm{0}}
-\def\bx{\bm{x}}
-\def\bb{\bm{b}}
-\def\ba{\bm{a}}
-\def\bt{\bm{t}}
-\def\bc{\bm{c}}
-\def\bf{\bm{f}}
-\def\by{\bm{y}}
-\def\bu{\bm{u}}
-\def\bq{\bm{q}}
-\def\bv{\bm{v}}
-\def\BW{\bm{W}}
-\def\BA{\bm{A}}
-\def\bz{\bm{z}}
-\def\BZ{\bm{Z}}
-\def\BH{\bm{H}}
-\def\BL{\bm{L}}
-\def\BU{\bm{U}}
-\def\BV{\bm{V}}
-\def\BB{\bm{B}}
-\def\BC{\bm{C}}
-\def\BD{\bm{D}}
-\def\BE{\bm{E}}
-\def\BW{\bm{W}}
-\def\BQ{\bm{Q}}
-\def\BG{\bm{G}}
-\def\BM{\bm{M}}
-\def\BA{\bm{A}}
-\def\BX{\bm{X}}
-\def\T{\mathbb{T}}
-\def\BY{\bm{Y}}
-\def\S{\mathbb{S}}
-\def\BQ{\bm{Q}}
-\def\BI{\bm{I}}
-\def\BR{\bm{R}}
-\def\BS{\bm{S}}
-\def\BPI{\bm{\Pi}}
-\def\O{\pazocal{O}}
-\def\N{\pazocal{N}}
-\def\F{\pazocal{F}}
-\def\R{\mathbb{R}}
-\def\BX{\bm{X}}
-\def\BSig{\bm{\Sigma}}
-\def\balpha{\bm{\alpha}}
-\def\blambda{\bm{\lambda}}
-\def\R{\mathbb{R}}
-\def\bone{\bm{1}}
-
-%%%%%%%%%
-\newcommand{\prob}[1]{\mathbb{P}\lsb #1\rsb}
-\newcommand{\mean}[1]{\mathbb{E}\lsb #1\rsb}
-\newcommand{\var}[1]{\mbox{\normalfont var}\lsb #1\rsb}
-%%%%%%%%%
-\newtheorem{example}{Example}[section]
-\newtheorem{definition}{Definition}[section]
-\newtheorem{proposition}{Proposition}[section]
-\newtheorem{lemma}{Lemma}[section]
-\newtheorem{theorem}{Theorem}[section]
-\newtheorem{corollary}{Corollary}[section]
-\newtheorem{remark}{Remark}[section]
-%%%%%%%%%
-
-%%%%%%%%%
-%%%%%%%%%
-\title{PROJECT TITLE}
-\author{NAME}
+\fi
+\usepackage{amsmath}
+\usepackage{array}
+%\ifCLASSOPTIONcompsoc
+%  \usepackage[caption=false,font=normalsize,labelfont=sf,textfont=sf]{subfig}
+%\else
+%  \usepackage[caption=false,font=footnotesize]{subfig}
+%\fi
+% subfig.sty, written by Steven Douglas Cochran, is the modern replacement
+% for subfigure.sty, the latter of which is no longer maintained and is
+% incompatible with some LaTeX packages including fixltx2e. However,
+% subfig.sty requires and automatically loads Axel Sommerfeldt's caption.sty
+% which will override IEEEtran.cls' handling of captions and this will result
+% in non-IEEE style figure/table captions. To prevent this problem, be sure
+% and invoke subfig.sty's "caption=false" package option (available since
+% subfig.sty version 1.3, 2005/06/28) as this is will preserve IEEEtran.cls
+% handling of captions.
+% Note that the Computer Society format requires a larger sans serif font
+% than the serif footnote size font used in traditional IEEE formatting
+% and thus the need to invoke different subfig.sty package options depending
+% on whether compsoc mode has been enabled.
+%
+% The latest version and documentation of subfig.sty can be obtained at:
+% http://www.ctan.org/pkg/subfig
 
 
 
-%\subjclass[2010]{Primary: 60D05, 60F17. Secondary: 60B20.}
+
+% *** FLOAT PACKAGES ***
+%
+%\usepackage{fixltx2e}
+% fixltx2e, the successor to the earlier fix2col.sty, was written by
+% Frank Mittelbach and David Carlisle. This package corrects a few problems
+% in the LaTeX2e kernel, the most notable of which is that in current
+% LaTeX2e releases, the ordering of single and double column floats is not
+% guaranteed to be preserved. Thus, an unpatched LaTeX2e can allow a
+% single column figure to be placed prior to an earlier double column
+% figure.
+% Be aware that LaTeX2e kernels dated 2015 and later have fixltx2e.sty's
+% corrections already built into the system in which case a warning will
+% be issued if an attempt is made to load fixltx2e.sty as it is no longer
+% needed.
+% The latest version and documentation can be found at:
+% http://www.ctan.org/pkg/fixltx2e
 
 
-%\keywords{Conic geometry, convex geometry, dimension reduction, invariance principle, limit theorem, random code, random matrix, randomized numerical linear algebra, signal reconstruction, statistical estimation, stochastic geometry, universality.}
+%\usepackage{stfloats}
+% stfloats.sty was written by Sigitas Tolusis. This package gives LaTeX2e
+% the ability to do double column floats at the bottom of the page as well
+% as the top. (e.g., "\begin{figure*}[!b]" is not normally possible in
+% LaTeX2e). It also provides a command:
+%\fnbelowfloat
+% to enable the placement of footnotes below bottom floats (the standard
+% LaTeX2e kernel puts them above bottom floats). This is an invasive package
+% which rewrites many portions of the LaTeX2e float routines. It may not work
+% with other packages that modify the LaTeX2e float routines. The latest
+% version and documentation can be obtained at:
+% http://www.ctan.org/pkg/stfloats
+% Do not use the stfloats baselinefloat ability as the IEEE does not allow
+% \baselineskip to stretch. Authors submitting work to the IEEE should note
+% that the IEEE rarely uses double column equations and that authors should try
+% to avoid such use. Do not be tempted to use the cuted.sty or midfloat.sty
+% packages (also by Sigitas Tolusis) as the IEEE does not format its papers in
+% such ways.
+% Do not attempt to use stfloats with fixltx2e as they are incompatible.
+% Instead, use Morten Hogholm'a dblfloatfix which combines the features
+% of both fixltx2e and stfloats:
+%
+% \usepackage{dblfloatfix}
+% The latest version can be found at:
+% http://www.ctan.org/pkg/dblfloatfix
 
+
+
+
+% *** PDF, URL AND HYPERLINK PACKAGES ***
+%
+%\usepackage{url}
+% url.sty was written by Donald Arseneau. It provides better support for
+% handling and breaking URLs. url.sty is already installed on most LaTeX
+% systems. The latest version and documentation can be obtained at:
+% http://www.ctan.org/pkg/url
+% Basically, \url{my_url_here}.
+
+
+
+
+% *** Do not adjust lengths that control margins, column widths, etc. ***
+% *** Do not use packages that alter fonts (such as pslatex).         ***
+% There should be no need to do such things with IEEEtran.cls V1.6 and later.
+% (Unless specifically asked to do so by the journal or conference you plan
+% to submit to, of course. )
+
+
+% correct bad hyphenation here
+\hyphenation{op-tical net-works semi-conduc-tor}
+\makeatletter  
+\newif\if@restonecol  
+\makeatother  
+\let\algorithm\relax  
+\let\endalgorithm\relax  
+\usepackage[linesnumbered,ruled,vlined]{algorithm2e}%[ruled,vlined]{  
+\usepackage{algpseudocode}  
+\usepackage{amsmath}  
+\renewcommand{\algorithmicrequire}{\textbf{Input:}}  % Use Input in the format of Algorithm  
+\renewcommand{\algorithmicensure}{\textbf{Output:}} % Use Output in the format of Algorithm   
 \begin{document}
+%
+% paper title
+% Titles are generally capitalized except for words such as a, an, and, as,
+% at, but, by, for, in, nor, of, on, or, the, to and up, which are usually
+% not capitalized unless they are the first or last word of the title.
+% Linebreaks \\ can be used within to get better formatting as desired.
+% Do not put math or special symbols in the title.
+\title{Life is short, using everything2vec}
 
 
+% author names and affiliations
+% use a multiple column layout for up to three different
+% affiliations
+\author{\IEEEauthorblockN{Michael Shell}
+\IEEEauthorblockA{School of Electrical and\\Computer Engineering\\
+Georgia Institute of Technology\\
+Atlanta, Georgia 30332--0250\\
+Email: http://www.michaelshell.org/contact.html}
+\and
+\IEEEauthorblockN{Yikai Wang}
+\IEEEauthorblockA{School of Data Science\\
+Fudan University\\
+15300180076@fudan.edu.cn}
+\and
+\IEEEauthorblockN{James Kirk\\ and Montgomery Scott}
+\IEEEauthorblockA{Starfleet Academy\\
+San Francisco, California 96678--2391\\
+Telephone: (800) 555--1212\\
+Fax: (888) 555--1212}}
+
+% conference papers do not typically use \thanks and this command
+% is locked out in conference mode. If really needed, such as for
+% the acknowledgment of grants, issue a \IEEEoverridecommandlockouts
+% after \documentclass
+
+% for over three affiliations, or if they all won't fit within the width
+% of the page, use this alternative format:
+% 
+%\author{\IEEEauthorblockN{Michael Shell\IEEEauthorrefmark{1},
+%Homer Simpson\IEEEauthorrefmark{2},
+%James Kirk\IEEEauthorrefmark{3}, 
+%Montgomery Scott\IEEEauthorrefmark{3} and
+%Eldon Tyrell\IEEEauthorrefmark{4}}
+%\IEEEauthorblockA{\IEEEauthorrefmark{1}School of Electrical and Computer Engineering\\
+%Georgia Institute of Technology,
+%Atlanta, Georgia 30332--0250\\ Email: see http://www.michaelshell.org/contact.html}
+%\IEEEauthorblockA{\IEEEauthorrefmark{2}Twentieth Century Fox, Springfield, USA\\
+%Email: homer@thesimpsons.com}
+%\IEEEauthorblockA{\IEEEauthorrefmark{3}Starfleet Academy, San Francisco, California 96678-2391\\
+%Telephone: (800) 555--1212, Fax: (888) 555--1212}
+%\IEEEauthorblockA{\IEEEauthorrefmark{4}Tyrell Inc., 123 Replicant Street, Los Angeles, California 90210--4321}}
+
+
+
+
+% use for special paper notices
+%\IEEEspecialpapernotice{(Invited Paper)}
+
+
+
+
+% make the title area
 \maketitle
-\thispagestyle{empty}
-%%%%%%%%%%%%%
-%%%%%%%%%%%%%
-\section{Introduction}
 
-%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%
+% As a general rule, do not put math, special symbols or citations
+% in the abstract
+%\begin{abstract}
+%The abstract goes here.
+%\end{abstract}
+
+% no keywords
+
+
+
+
+% For peer review papers, you can put extra information on the cover
+% page as needed:
+% \ifCLASSOPTIONpeerreview
+% \begin{center} \bfseries EDICS Category: 3-BBND \end{center}
+% \fi
+%
+% For peerreview papers, this IEEEtran command inserts a page break and
+% creates the second title. It will be ignored for other modes.
+\IEEEpeerreviewmaketitle
+\section{Task Review}
+\subsection{Task 1}
+Design clustering algorithms or community mining algorithms to cluster all the papers in the data set. Use visualize tools to show all fields (ie, communities, identify corresponding community research topics), and highlight the most influential scholars in each field.
+\subsection{Task 2}
+Realization of demonstrating the ego-network to any input scholar (refer to the function example on the ArnetMiner website).
+\subsection{Task 3}
+Use the data provided by DBLP and ArnetMiner to analyze and model more social relationships among scholars, such as predicting the cooperation or citation relationship between two scholars, and predicting which conference will a scholar publish papers on in the future.
+\section{division of work}
+\begin{enumerate}
+\item Yikai Wang: 
+
+For task 1, he uses several different methods to extract features for clustering (deepwalk, node2vec, LINE and metapath2vec) and use KMeans and Birch to cluster.
+
+For task 3, he uses metapath2vec to generate the vector representation of    scholar cooperation network, scholar citation network and scholar-conference network.
+\item Dan Wu:
+\item Zheng Wei:
+\end{enumerate}
+\section{methodology}
+\subsection{HARP}
+\begin{figure}[h]
+\centering
+\includegraphics[width=2.5in]{NRL}
+\caption{Network representation learning flowchart}
+\label{fig_NRL}
+\end{figure}
+Network is an important form of expressing the relationship between objects and objects. A key issue for the analysis of networks is to study how to reasonably represent feature information in the network. With the development of machine learning technology, feature learning for nodes in the network has become an emerging research task. Network representation learning algorithm transforms network information into low-dimensional dense real vector. 
+
+In all types of networks, one important type has attracted the attention of a large number of researchers. This network suppose all nodes in the network have the same type. For example, the nodes are all papers or all scholars. This specific network is called homogeneous network. 
+
+Formally, let $G=(V,E)$ be a graph, where $V$ is the set of nodes and $E$ is the set of edges. The goal of network representation learning is to develop a mapping function $\Phi:V\rightarrow R^{|V|*d},d\ll|V|$, which defines the latent representation of each node $v\in V$. There are many online learning methods for this task, like DeepWalk, Node2vec and LINE. The first two adopt short random walks to explore the local neighborhoods of nodes, while the last one is concerned with even closer relationships (nodes at most two hops away). However, there are two main disadvantages for the three methods:
+\begin{enumerate}
+	\item all the models do not involve high-order graph structural information
+	\item their stochastic optimization can fall victim to poor initialization
+\end{enumerate}
+Thus, we change the traditional problem into hierarchical representation learning problem. The main idea is we seek to find a graph $G_s=(V_s,E_s)$ which captures the essential structure of $G$, but is much smaller(i.e. $|V_s|\ll|V|,|E_s|\ll|E|$). It is trivial that $G_s$ is easier to embed. Since we have much less relationships, which means the mapping could be much smoother. Further more, since the $G_s$ is much smaller, the models that focus on local structure now could have a better performance on global structure's representaion.
+
+Our method for mulit-level graph representation learning, HARP, consists of three parts-graph coarsening, graph embedding and representation refinement.
+
+\begin{enumerate}
+	\item Graph Coarsening:
+	
+	Given a graph $G$, graph coarsening algorithms create a hierarchy of successively smaller graphs $G_0,G_1,\ldots,G_L$, where $G_0=G$. The coarser graphs preserve the global structure of the original graph and have much fewer nodes and edges.
+	\item Graph Embedding on the Coarsest Graph:
+	
+	Using provided network embedding algorithms to to graph embedding.(DeepWalk, Node2vec, LINE, etc.)
+	\item Graph Representation Prolongation and Refinement:
+	
+	We prolong and refine the graph representation from the coarsest to the finest graph. For each graph $G_i$, we use the graph representation of $G_{i+1}$ as its initial embedding and refine the graph embedding.
+\end{enumerate}
+The complete algorithm is expressed as follows:
+\begin{algorithm}[h]
+  \caption{HARP(G,Embed())}  
+  \KwIn{network $G=(V,E)$, arbitrary network embedding algorithm EMBED()}  
+  \KwOut{ node embeddings $\Phi\in R^{|V|*d}$}  
+  $G_0,G_1,\ldots,G_L\leftarrow$GRAPHCOARSENING(G)\;  
+  Initial $\Phi_{G_L}^{'}$ by assigning zeros\;
+  $\Phi_{G_L}\leftarrow EMBED(G_L,\Phi_{G_L}^{'})$
+  \For{$i=L-1;i \geq 0$}  
+  {$\Phi_{G_i}^{'}\leftarrow PROLONGATE(\Phi_{G_{i+1}},G_{i+1},G_i)$\;
+  $\Phi_{G_i}\leftarrow EMBED(G_i,\Phi_{G_i}^{'})$
+  }
+  return $\Phi_{G_0}$\;
+  
+  \textbf{GraphGoarsening}($G(V,E)$)
+  $L\leftarrow 0$\;
+  $G_0\leftarrow G$\;
+  \While{$|V_L|\geq threshold$}{
+  $L\leftarrow L+1$\;
+  $G_L\leftarrow$EDGECOLLAPSE(STARCOLLAPSE(G))\;}
+  return $G_0,G_1,\ldots,G_L$\;
+\end{algorithm}  
+In the algorithm, \textbf{Edge Collapse} is an algorithm for preserving first-order proximity when coarsening the network. For edges $E$, it will select $E^{'}\subset E$, satisfying no two edges in the subset are incident to the same vertex. That is, for each $(u_i,v_i)\in E^{'}$, it merges the pairs into a single node $w_i$, and merge the edges incident to $u_i$ and $v_i$. \textbf{Star Collapsing} is an algorithm for preserving second-order proximity when coarsening the network. It will merges nodes with the same neighbors into supernodes. For example, in the Figure \ref{fig_HARP},$(v_1,v_2),(v_3,v_4)$ and $(v_5,v_6)$ are merged into supernodes as they share the same neighbors $(v_7)$.
+\begin{figure}[h]
+\centering
+\includegraphics[width=2.5in]{HARP}
+\caption{Illustration of graph coarsening algorithms}
+\label{fig_HARP}
+\end{figure}
+\subsection{metapath2vec++}
+Different with homogeneous networks, heterogeneous networks involve more than one node types and relationships between the same type of nodes and/or different types of nodes. Thereafter, these networks cannot be handled by representation learning models that specifically designed for homogeneous networks. In this paper, we use a heterogeneous skip-gram model, $metapath2vec++$, to model the heterogeneous neighborhood of a node.
+
+Specifically, in metapath2vec++, we enable skip-gram to learn effective node representations for a heterogeneous network $G=(V,E,T)$ with $|T_V|>1$ by maximizing the probability of having the heterogeneous context $N_t(v),t\in T_V$ given a node $v$:
+\begin{equation}
+	arg max_{\theta}\sum_{v\in V}\sum_{t\in T_V}\sum_{c_t\in N_t(v)} log p(c_t|v;\theta)
+\label{equ:argmax}
+\end{equation}
+where $N_t(v)$ denotes $v$'s neighborhood with the $t^{th}$ types of nodes and $p(c_t|v;\theta)$ is commonly defined as a softmax function, that is: $p(c_t|v;\theta)=\frac{exp\{X_{c_t}*X_v\}}{\sum_{u_t\in V_t}exp\{X_{u_t}*X_v\}}$, where $X_v$ is the $v^{th}$ row of $X$, representing the embedding vector for node $v$. $V_t$ is the node set of type $t$ in the network.
+
+However, the method will cost a terrible long time. To solve the problem, negative sampling was introduced by Mikolov et al. Using this method, we just need to sample a small set of nodes from the network in order to construct softmax. Specifically, given a negative sample size $M$, we use following method to update Equation \ref{equ:argmax}:
+\begin{equation}
+log \sigma(X_{c_t}*X_v)+\sum_{m=1}^M E_{u_t^m\sim P_t(u_t)}[log \sigma(-X_{u_t^M}*X_v)]
+\label{equ:OX}
+\end{equation}
+where $\sigma(x)=\frac{1}{1+e^{-x}}$ and $P(u)$ is the pre-defined distribution from which a negative node $u^m$ is drew from for $M$ times. In our model, we regard different types of nodes homogeneously and do not distinguish them when drawing negative nodes. The gradients of equation \ref{equ:OX} are derived as follows:
+\begin{equation}\label{equ:gradient}
+\begin{split}
+\frac{\partial O(X)}{\partial X_{u_t^m}}=(\sigma(X_{u_t^m}X_v-I_{c_t}[u_t^m]))X_v\\
+\frac{\partial O(X)}{\partial X_v}=\sum_{m=0}^M(\sigma(X_{u_t^m}X_v-I_{c_t}[u_t^m]))X_{u_t^m}
+\end{split}
+\end{equation}
+
+Having defined the skip-gram model, the problem we need to solve is how to effectively transform the heterogeneous network into skip-gram. Similar to homogeneous network, we can use random walk to generate paths of multiple types of nodes. Different with homogeneous network, in heterogeneous network, we need to consider the type of the nodes in the random walk.
+
+Formally, a meta-path scheme $P$ is defined as a path that is denoted in the form of $V_1 \xrightarrow{R_1}V_2\xrightarrow{R_2}\dots V_t\xrightarrow{R_t}V_{t+1}\dots\xrightarrow{R_{l-1}}V_l$, wherein $R=R_1 \circ R_2 \circ \dots \circ R_{l-1}$ defines the composite relations between node types $V_1$ and $V_l$. Thus we could show how to use meta-paths to guide heterogeneous random walkers. Given a heterogeneous network $G=(V,E,T)$ and a meta-path scheme $P$, the transition probability at step $i$ is as follows:
+\begin{equation}
+	p(v^{i+1}|v_t^i,P)=\begin{cases}
+		\frac{1}{|N_{t+1}(v_t^l)|}&(v^{i+1},v_t^i)\in E,\phi(v^{i+1})=t+1\\0&(v^{i+1},v_t^i)\in E,\phi(v^{i+1})\neq t+1\\0&(v^{i+1},v_t^i)\notin E
+	\end{cases}
+\label{equ:tran}
+\end{equation}
+where $v_t^i\in V_t$ and $N_{t+1}(v_t^i)$ denote the $V_{t+1}$ type of neighborhood of node $v_t^i$. Further more, meta-paths are commonly used in a symmetric way, which means its first node type is the same as the last one. That is:
+\begin{equation}
+	p(v^{i+1}|v_t^i)=p(v^{i+1}|v_1^i),\text{if } t=l
+\end{equation}
+The complete algorithm is expressed as follows:
+\begin{algorithm}[h]
+  \caption{The metapath2vec++ Algorithm.}  
+  \KwIn{The heterogeneous information network $G=(V,E,T)$, a meta-path scheme $P$,\# walks per node $w$, walk length $l$, embedding dimension $d$,neighborhood size $k$}  
+  \KwOut{The latent node embeddings $X\in R^{|V|*d}$}  
+  initialize $X$\;  
+  \For{$i=1;i \le w$}  
+  {\For{$v\in V$}{
+  MP=MetaPathRandomWalk($G,P,v,l$)\;
+  X=HeterogeneousSkipGram($X,k,MP$)\;}
+  }
+  return $X$\;
+  
+  \textbf{MetaPathRandomWalk}($G,P,v,l$)
+  MP[1]=v\;
+  \For{$i=1;i<l$}{
+  draw u according to Eq. \ref{equ:tran}\;
+  MP[i+1]=u\;}
+  return MP\;
+  
+  \textbf{HeterogneousSkipGram}($X,k,MP$)
+  \For{$i=1;i\le l$}{
+  v = MP[i]\;
+  \For{$j=max(0,i-k);j\le min(i+k,l);j\neq i$}{
+  $c_t=MP[j]$\;
+  $X^{new}=X^{old}-\eta \frac{\partial O(X)}{\partial X}$(Eq. \ref{equ:gradient}\;}}
+\end{algorithm}  
+\section{Task 1}
+\section{Task 2}
+\section{Task 3}
+% An example of a floating figure using the graphicx package.
+% Note that \label must occur AFTER (or within) \caption.
+% For figures, \caption should occur after the \includegraphics.
+% Note that IEEEtran v1.7 and later has special internal code that
+% is designed to preserve the operation of \label within \caption
+% even when the captionsoff option is in effect. However, because
+% of issues like this, it may be the safest practice to put all your
+% \label just after \caption rather than within \caption{}.
+%
+% Reminder: the "draftcls" or "draftclsnofoot", not "draft", class
+% option should be used if it is desired that the figures are to be
+% displayed while in draft mode.
+%
+%\begin{figure}[!t]
+%\centering
+%\includegraphics[width=2.5in]{myfigure}
+% where an .eps filename suffix will be assumed under latex, 
+% and a .pdf suffix will be assumed for pdflatex; or what has been declared
+% via \DeclareGraphicsExtensions.
+%\caption{Simulation results for the network.}
+%\label{fig_sim}
+%\end{figure}
+
+% Note that the IEEE typically puts floats only at the top, even when this
+% results in a large percentage of a column being occupied by floats.
+
+
+% An example of a double column floating figure using two subfigures.
+% (The subfig.sty package must be loaded for this to work.)
+% The subfigure \label commands are set within each subfloat command,
+% and the \label for the overall figure must come after \caption.
+% \hfil is used as a separator to get equal spacing.
+% Watch out that the combined width of all the subfigures on a 
+% line do not exceed the text width or a line break will occur.
+%
+%\begin{figure*}[!t]
+%\centering
+%\subfloat[Case I]{\includegraphics[width=2.5in]{box}%
+%\label{fig_first_case}}
+%\hfil
+%\subfloat[Case II]{\includegraphics[width=2.5in]{box}%
+%\label{fig_second_case}}
+%\caption{Simulation results for the network.}
+%\label{fig_sim}
+%\end{figure*}
+%
+% Note that often IEEE papers with subfigures do not employ subfigure
+% captions (using the optional argument to \subfloat[]), but instead will
+% reference/describe all of them (a), (b), etc., within the main caption.
+% Be aware that for subfig.sty to generate the (a), (b), etc., subfigure
+% labels, the optional argument to \subfloat must be present. If a
+% subcaption is not desired, just leave its contents blank,
+% e.g., \subfloat[].
+
+
+% An example of a floating table. Note that, for IEEE style tables, the
+% \caption command should come BEFORE the table and, given that table
+% captions serve much like titles, are usually capitalized except for words
+% such as a, an, and, as, at, but, by, for, in, nor, of, on, or, the, to
+% and up, which are usually not capitalized unless they are the first or
+% last word of the caption. Table text will default to \footnotesize as
+% the IEEE normally uses this smaller font for tables.
+% The \label must come after \caption as always.
+%
+%\begin{table}[!t]
+%% increase table row spacing, adjust to taste
+%\renewcommand{\arraystretch}{1.3}
+% if using array.sty, it might be a good idea to tweak the value of
+% \extrarowheight as needed to properly center the text within the cells
+%\caption{An Example of a Table}
+%\label{table_example}
+%\centering
+%% Some packages, such as MDW tools, offer better commands for making tables
+%% than the plain LaTeX2e tabular which is used here.
+%\begin{tabular}{|c||c|}
+%\hline
+%One & Two\\
+%\hline
+%Three & Four\\
+%\hline
+%\end{tabular}
+%\end{table}
+
+
+% Note that the IEEE does not put floats in the very first column
+% - or typically anywhere on the first page for that matter. Also,
+% in-text middle ("here") positioning is typically not used, but it
+% is allowed and encouraged for Computer Society conferences (but
+% not Computer Society journals). Most IEEE journals/conferences use
+% top floats exclusively. 
+% Note that, LaTeX2e, unlike IEEE journals/conferences, places
+% footnotes above bottom floats. This can be corrected via the
+% \fnbelowfloat command of the stfloats package.
+
+
+
+
+
+
+% conference papers do not normally have an appendix
+
+
+% use section* for acknowledgment
+
+
+% trigger a \newpage just before the given reference
+% number - used to balance the columns on the last page
+% adjust value as needed - may need to be readjusted if
+% the document is modified later
+%\IEEEtriggeratref{8}
+% The "triggered" command can be changed if desired:
+%\IEEEtriggercmd{\enlargethispage{-5in}}
+
+% references section
+
+% can use a bibliography generated by BibTeX as a .bbl file
+% BibTeX documentation can be easily obtained at:
+% http://mirror.ctan.org/biblio/bibtex/contrib/doc/
+% The IEEEtran BibTeX style support page is at:
+% http://www.michaelshell.org/tex/ieeetran/bibtex/
+%\bibliographystyle{IEEEtran}
+% argument is your BibTeX string definitions and bibliography database(s)
+%\bibliography{IEEEabrv,../bib/paper}
+%
+% <OR> manually copy in the resultant .bbl file
+% set second argument of \begin to the number of references
+% (used to reserve space for the reference number labels box)
+\begin{thebibliography}{1}
+
+\bibitem{IEEEhowto:kopka}
+H.~Kopka and P.~W. Daly, \emph{A Guide to \LaTeX}, 3rd~ed.\hskip 1em plus
+  0.5em minus 0.4em\relax Harlow, England: Addison-Wesley, 1999.
+
+\end{thebibliography}
+
+
+
+
+% that's all folks
 \end{document}
+
+
