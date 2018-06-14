@@ -3,6 +3,7 @@
 """
 @author: Yikai Wang
 """
+#This file load the txt file metapath2vec generates and save the data into a dict.
 import numpy as np
 import pickle
 def load_txt(filename):

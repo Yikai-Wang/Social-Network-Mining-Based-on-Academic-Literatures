@@ -3,6 +3,7 @@
 """
 @author: Yikai Wang
 """
+#Using KMeans and Birch to cluster.
 import numpy as np
 from sklearn.cluster import KMeans,MeanShift,DBSCAN,Birch
 import pickle

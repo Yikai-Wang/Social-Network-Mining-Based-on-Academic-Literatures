@@ -1,21 +1,8 @@
-/*
-------------------------------------------------------------------------------------------------------------------------------------------------
 The metapath2vec code is built upon Mikolov et al.'s word2vec.c from https://code.google.com/archive/p/word2vec/
 
-------------------------------------------------------------------------------------------------------------------------------------------------
-*/
+The task3* and task1.py are used to generate meta-path we used in the embedding part.
 
-metapath2vec bibtex information
-------------------------------------------------
-@inproceedings{metapath2vec:KDD17,
- title={metapath2vec: Scalable Representation Learning for Heterogeneous Networks},
- author = {Dong, Yuxiao and Chawla, Nitesh V and Swami, Ananthram},
- booktitle = {KDD '17},
- year = {2017},
- pages = {135--144},
- publisher = {ACM}
-} 
-------------------------------------------------
+Belows are the instruction of embedding part:
 
 Compile:
 	1.  cmd "make" in folder code_metapath2vec/
@@ -72,5 +59,12 @@ Output:
 	2. the same vector file for each node in text format 	(e.g., dbis.cac.w1000.l100.txt)
 			
 
+@inproceedings{metapath2vec:KDD17,
+ title={metapath2vec: Scalable Representation Learning for Heterogeneous Networks},
+ author = {Dong, Yuxiao and Chawla, Nitesh V and Swami, Ananthram},
+ booktitle = {KDD '17},
+ year = {2017},
+ pages = {135--144},
+ publisher = {ACM}
 
-
+}
