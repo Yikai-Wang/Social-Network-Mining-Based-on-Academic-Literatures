@@ -172,15 +172,19 @@ def load_json(dir):
 parser = ArgumentParser('evaluation',
                             formatter_class=ArgumentDefaultsHelpFormatter,
                             conflict_handler='resolve')
-parser.add_argument('--task', default='conf',
+parser.add_argument('--task', default='all',
                         help='cp/re/conf/all')
-parser.add_argument('--AUC', default=False,
+parser.add_argument('--AUC', default=True,
                         help='1 or 0')
 parser.add_argument('--p', default=False,
                         help='1 or 0')
 args = parser.parse_args()
 if args.task=='cp' or args.task == 'all':
-    vectors = load_pickle('data/task3cp.pkl')
+    #vectors = load_pickle('data/task3cp.pkl')
+    #vectors = load_pickle('data/deepwalk_task3cp_vectors.pkl')
+    #vectors = load_pickle('data/line_task3cp_vectors.pkl')
+    #vectors = load_pickle('data/deepwalk_task3all_vectors.pkl')['author']
+    vectors = load_pickle('data/line_task3all_vectors.pkl')['author']
     valid_id = load_txt('data/valid_id_4task3.txt')
     chosen_authors = list(vectors.keys())
     authors2num = dict()
@@ -206,7 +210,11 @@ if args.task=='cp' or args.task == 'all':
     if args.p!=False:
         Precision(task='cp',nonexist=nonexist,authors=chosen_authors,L=len(missing_edges),node_vector=vectors)
 if args.task=='re' or args.task == 'all':
-    vectors = load_pickle('data/task3re.pkl')
+    #vectors = load_pickle('data/task3re.pkl')
+    #vectors = load_pickle('data/deepwalk_task3re_vectors.pkl')
+    #vectors = load_pickle('data/line_task3re_vectors.pkl')
+    #vectors = load_pickle('data/deepwalk_task3all_vectors.pkl')['author']
+    vectors = load_pickle('data/line_task3all_vectors.pkl')['author']
     valid_id = load_txt('data/valid_id_4task3.txt')
     id2num = load_txt_1('data/id2num.txt')
     chosen_authors = list(vectors.keys())
@@ -246,7 +254,11 @@ if args.task =='conf' or args.task == 'all':
          'AIED', 'ITS', 'ICALT',
          'ACL', 'EACL', 'COLING', 'EMNLP',
          'MASCOTS', 'SOSP', 'OSDI']
-    vectors = load_pickle('data/task3conf.pkl')
+    #vectors = load_pickle('data/task3conf.pkl')
+    #vectors = load_pickle('data/deepwalk_task3conf_vectors.pkl')
+    #vectors = load_pickle('data/line_task3conf_vectors.pkl')
+    #vectors = load_pickle('data/deepwalk_task3all_vectors.pkl')
+    vectors = load_pickle('data/line_task3all_vectors.pkl')
     valid_id = load_txt('data/valid_id_4task3.txt')
     id2num = load_txt_1('data/id2num.txt')
     chosen_authors = list(vectors['author'].keys())

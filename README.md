@@ -32,6 +32,15 @@ Solution:
    | Kmeans metapath2vec word2vec | Dm   | nl   | Ed   | dp   | Os   | Ml   | 0.4987644456282091  |
    | Birch word2vec               | Ml   | Os   | Ed   | dp   | Nl   | Dm   | 0.45135467069146656 |
    | Kmeans word2vec              | os   | Nl   | ml   | ed   | Dp   | dm   | 0.4425208268596203  |
+   | Kmeans line mix              | dm   | ed   | Ml   | os   | Nl   | dp   | 0.6704991047779701  |
+   | Kmeans deepwalk mix          | Ed   | Nl   | ml   | dm   | Os   | dp   | 0.716621535638715   |
+   |                              |      |      |      |      |      |      |                     |
+   |                              |      |      |      |      |      |      |                     |
+   |                              |      |      |      |      |      |      |                     |
+   |                              |      |      |      |      |      |      |                     |
+   |                              |      |      |      |      |      |      |                     |
+   |                              |      |      |      |      |      |      |                     |
+   |                              |      |      |      |      |      |      |                     |
 
    
 
@@ -91,11 +100,11 @@ Solution:
 
 （添加于6.4：已经可以做到的是可以对固定年限前的学者利用网络结构进行向量化，如何对时间序列进行预测？）
 
-学者合作AUC：0.7204
+学者合作AUC：0.7539 0.8338(deepwalk) 0.8373(line) 0.8572(all deepwalk) 0.5686(all line)
 
-学者引用AUC:  0.7022
+学者引用AUC:  0.6692 0.8780 0.7693 0.8530 0.5643
 
-学者会议AUC: 0.7038
+学者会议AUC: 0.7785 0.8776 0.6732 0.8850 0.5481
 
 可以用的：
 

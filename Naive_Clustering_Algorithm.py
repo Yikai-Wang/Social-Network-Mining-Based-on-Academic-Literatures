@@ -94,14 +94,14 @@ if args.model == 'word2vec':
     data = [[k,v]for k,v in w2v.items()]
 else:
     n2v = np.load('model_'+args.model+'.npy')
-    data = [[i,n2v[i]] for i in range(len(n2v))]
+    data = [[i,n2v[i]] for i in range(67581)]
 if args.mixture:
     args.model += '_word2vec'
     w2v = load_pickle()
     mix_data = []
     for i in range(len(data)):
         tmp = data[i][1]
-        tmp = np.append(tmp,w2v)
+        tmp = np.append(tmp,w2v[i])
         mix_data.append([i,tmp])
     data = mix_data
 print('Finish Data preprocessing')
