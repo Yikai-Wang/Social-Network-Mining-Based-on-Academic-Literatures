@@ -1,8 +1,12 @@
-# HARP
-Code for the AAAI 2018 paper "HARP: Hierarchical Representation Learning for Networks".
-HARP is a meta-strategy to improve several state-of-the-art network embedding algorithms, such as *DeepWalk*, *LINE* and *Node2vec*.
+# NOTE!
 
-You can read the preprint of our paper on [Arxiv](https://arxiv.org/abs/1706.07845).
+Our harp method are based on [this](https://github.com/GTmac/HARP). **However**, we have changed the code a  lot. Consequently if you want to use the initial code, you'd better to click the link shows above.
+
+Below are the usage for the code.
+
+# HARP
+
+HARP is a meta-strategy to improve several state-of-the-art network embedding algorithms, such as *DeepWalk*, *LINE* and *Node2vec*.
 
 This code run with Python 2.
 
@@ -17,9 +21,8 @@ To install, run the following commands:
 	cd magic-graph
 	python setup.py install
 
-Then, install HARP and the other requirements:
+Then, download the code and install the requirements:
 
-	git clone https://github.com/GTmac/HARP.git
 	cd HARP
 	pip install -r requirements.txt
 
