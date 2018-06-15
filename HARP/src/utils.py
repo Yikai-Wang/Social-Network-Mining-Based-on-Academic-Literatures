@@ -1,3 +1,6 @@
+"""
+Modified by Yikai Wang
+"""
 import scipy.sparse as sparse
 
 def save_edgelist(G, fname, weighted=False, sep=' '):
