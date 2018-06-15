@@ -43,7 +43,7 @@ def load_txt(filename):
             txt[tmp[0]] = tmp[1]
     return txt
 
-result = load_pickle('cluster_KMeans_line_mix_nrl.pkl')
+result = load_pickle('cluster_KMeans_deepwalk_mix_word2vec_nrl.pkl')
 id2num = load_txt('id2num.txt')
 true_label = {}
 for k,v in confs.items():
@@ -63,12 +63,12 @@ for k,v in result.items():
 
 print(predict)
 num2str = dict()
-num2str[0]='dm'
-num2str[1]='ed'
-num2str[2]='ml'
+num2str[0]='ed'
+num2str[1]='dp'
+num2str[2]='nl'
 num2str[3]='os'
-num2str[4]='nl'
-num2str[5]='dp'
+num2str[4]='dm'
+num2str[5]='ml'
 prop = {}
 for k in confs.keys():
   prop[k] = [0,0]

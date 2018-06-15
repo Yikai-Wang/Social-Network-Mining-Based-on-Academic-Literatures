@@ -1,121 +1,12 @@
-
 \documentclass[conference]{IEEEtran}
-%\usepackage{cite}
-% cite.sty was written by Donald Arseneau
-% V1.6 and later of IEEEtran pre-defines the format of the cite.sty package
-% \cite{} output to follow that of the IEEE. Loading the cite package will
-% result in citation numbers being automatically sorted and properly
-% "compressed/ranged". e.g., [1], [9], [2], [7], [5], [6] without using
-% cite.sty will become [1], [2], [5]--[7], [9] using cite.sty. cite.sty's
-% \cite will automatically add leading space, if needed. Use cite.sty's
-% noadjust option (cite.sty V3.8 and later) if you want to turn this off
-% such as if a citation ever needs to be enclosed in parenthesis.
-% cite.sty is already installed on most LaTeX systems. Be sure and use
-% version 5.0 (2009-03-20) and later if using hyperref.sty.
-% The latest version can be obtained at:
-% http://www.ctan.org/pkg/cite
-% The documentation is contained in the cite.sty file itself.
-
+\usepackage{cite}
 \ifCLASSINFOpdf
    \usepackage[pdftex]{graphicx}
 \else
   \usepackage[dvips]{graphicx}
-
 \fi
 \usepackage{amsmath}
 \usepackage{array}
-%\ifCLASSOPTIONcompsoc
-%  \usepackage[caption=false,font=normalsize,labelfont=sf,textfont=sf]{subfig}
-%\else
-%  \usepackage[caption=false,font=footnotesize]{subfig}
-%\fi
-% subfig.sty, written by Steven Douglas Cochran, is the modern replacement
-% for subfigure.sty, the latter of which is no longer maintained and is
-% incompatible with some LaTeX packages including fixltx2e. However,
-% subfig.sty requires and automatically loads Axel Sommerfeldt's caption.sty
-% which will override IEEEtran.cls' handling of captions and this will result
-% in non-IEEE style figure/table captions. To prevent this problem, be sure
-% and invoke subfig.sty's "caption=false" package option (available since
-% subfig.sty version 1.3, 2005/06/28) as this is will preserve IEEEtran.cls
-% handling of captions.
-% Note that the Computer Society format requires a larger sans serif font
-% than the serif footnote size font used in traditional IEEE formatting
-% and thus the need to invoke different subfig.sty package options depending
-% on whether compsoc mode has been enabled.
-%
-% The latest version and documentation of subfig.sty can be obtained at:
-% http://www.ctan.org/pkg/subfig
-
-
-
-
-% *** FLOAT PACKAGES ***
-%
-%\usepackage{fixltx2e}
-% fixltx2e, the successor to the earlier fix2col.sty, was written by
-% Frank Mittelbach and David Carlisle. This package corrects a few problems
-% in the LaTeX2e kernel, the most notable of which is that in current
-% LaTeX2e releases, the ordering of single and double column floats is not
-% guaranteed to be preserved. Thus, an unpatched LaTeX2e can allow a
-% single column figure to be placed prior to an earlier double column
-% figure.
-% Be aware that LaTeX2e kernels dated 2015 and later have fixltx2e.sty's
-% corrections already built into the system in which case a warning will
-% be issued if an attempt is made to load fixltx2e.sty as it is no longer
-% needed.
-% The latest version and documentation can be found at:
-% http://www.ctan.org/pkg/fixltx2e
-
-
-%\usepackage{stfloats}
-% stfloats.sty was written by Sigitas Tolusis. This package gives LaTeX2e
-% the ability to do double column floats at the bottom of the page as well
-% as the top. (e.g., "\begin{figure*}[!b]" is not normally possible in
-% LaTeX2e). It also provides a command:
-%\fnbelowfloat
-% to enable the placement of footnotes below bottom floats (the standard
-% LaTeX2e kernel puts them above bottom floats). This is an invasive package
-% which rewrites many portions of the LaTeX2e float routines. It may not work
-% with other packages that modify the LaTeX2e float routines. The latest
-% version and documentation can be obtained at:
-% http://www.ctan.org/pkg/stfloats
-% Do not use the stfloats baselinefloat ability as the IEEE does not allow
-% \baselineskip to stretch. Authors submitting work to the IEEE should note
-% that the IEEE rarely uses double column equations and that authors should try
-% to avoid such use. Do not be tempted to use the cuted.sty or midfloat.sty
-% packages (also by Sigitas Tolusis) as the IEEE does not format its papers in
-% such ways.
-% Do not attempt to use stfloats with fixltx2e as they are incompatible.
-% Instead, use Morten Hogholm'a dblfloatfix which combines the features
-% of both fixltx2e and stfloats:
-%
-% \usepackage{dblfloatfix}
-% The latest version can be found at:
-% http://www.ctan.org/pkg/dblfloatfix
-
-
-
-
-% *** PDF, URL AND HYPERLINK PACKAGES ***
-%
-%\usepackage{url}
-% url.sty was written by Donald Arseneau. It provides better support for
-% handling and breaking URLs. url.sty is already installed on most LaTeX
-% systems. The latest version and documentation can be obtained at:
-% http://www.ctan.org/pkg/url
-% Basically, \url{my_url_here}.
-
-
-
-
-% *** Do not adjust lengths that control margins, column widths, etc. ***
-% *** Do not use packages that alter fonts (such as pslatex).         ***
-% There should be no need to do such things with IEEEtran.cls V1.6 and later.
-% (Unless specifically asked to do so by the journal or conference you plan
-% to submit to, of course. )
-
-
-% correct bad hyphenation here
 \hyphenation{op-tical net-works semi-conduc-tor}
 \makeatletter  
 \newif\if@restonecol  
@@ -128,89 +19,18 @@
 \renewcommand{\algorithmicrequire}{\textbf{Input:}}  % Use Input in the format of Algorithm  
 \renewcommand{\algorithmicensure}{\textbf{Output:}} % Use Output in the format of Algorithm   
 \begin{document}
-%
-% paper title
-% Titles are generally capitalized except for words such as a, an, and, as,
-% at, but, by, for, in, nor, of, on, or, the, to and up, which are usually
-% not capitalized unless they are the first or last word of the title.
-% Linebreaks \\ can be used within to get better formatting as desired.
-% Do not put math or special symbols in the title.
 \title{Life is short, use everything2vec}
-
-
-% author names and affiliations
-% use a multiple column layout for up to three different
-% affiliations
-\author{\IEEEauthorblockN{Michael Shell}
-\IEEEauthorblockA{School of Electrical and\\Computer Engineering\\
-Georgia Institute of Technology\\
-Atlanta, Georgia 30332--0250\\
-Email: http://www.michaelshell.org/contact.html}
-\and
-\IEEEauthorblockN{Yikai Wang}
+\author{\IEEEauthorblockN{Yikai Wang}
 \IEEEauthorblockA{School of Data Science\\
 Fudan University\\
 15300180076@fudan.edu.cn}
 \and
-\IEEEauthorblockN{James Kirk\\ and Montgomery Scott}
-\IEEEauthorblockA{Starfleet Academy\\
-San Francisco, California 96678--2391\\
-Telephone: (800) 555--1212\\
-Fax: (888) 555--1212}}
-
-% conference papers do not typically use \thanks and this command
-% is locked out in conference mode. If really needed, such as for
-% the acknowledgment of grants, issue a \IEEEoverridecommandlockouts
-% after \documentclass
-
-% for over three affiliations, or if they all won't fit within the width
-% of the page, use this alternative format:
-% 
-%\author{\IEEEauthorblockN{Michael Shell\IEEEauthorrefmark{1},
-%Homer Simpson\IEEEauthorrefmark{2},
-%James Kirk\IEEEauthorrefmark{3}, 
-%Montgomery Scott\IEEEauthorrefmark{3} and
-%Eldon Tyrell\IEEEauthorrefmark{4}}
-%\IEEEauthorblockA{\IEEEauthorrefmark{1}School of Electrical and Computer Engineering\\
-%Georgia Institute of Technology,
-%Atlanta, Georgia 30332--0250\\ Email: see http://www.michaelshell.org/contact.html}
-%\IEEEauthorblockA{\IEEEauthorrefmark{2}Twentieth Century Fox, Springfield, USA\\
-%Email: homer@thesimpsons.com}
-%\IEEEauthorblockA{\IEEEauthorrefmark{3}Starfleet Academy, San Francisco, California 96678-2391\\
-%Telephone: (800) 555--1212, Fax: (888) 555--1212}
-%\IEEEauthorblockA{\IEEEauthorrefmark{4}Tyrell Inc., 123 Replicant Street, Los Angeles, California 90210--4321}}
-
-
-
-
-% use for special paper notices
-%\IEEEspecialpapernotice{(Invited Paper)}
-
-
-
-
-% make the title area
+\IEEEauthorblockN{Dan Wu}
+\IEEEauthorblockA{}
+\and
+\IEEEauthorblockN{Zheng Wei}
+\IEEEauthorblockA{}}
 \maketitle
-
-% As a general rule, do not put math, special symbols or citations
-% in the abstract
-%\begin{abstract}
-%The abstract goes here.
-%\end{abstract}
-
-% no keywords
-
-
-
-
-% For peer review papers, you can put extra information on the cover
-% page as needed:
-% \ifCLASSOPTIONpeerreview
-% \begin{center} \bfseries EDICS Category: 3-BBND \end{center}
-% \fi
-%
-% For peerreview papers, this IEEEtran command inserts a page break and
-% creates the second title. It will be ignored for other modes.
 \IEEEpeerreviewmaketitle
 \section{Task Review}
 \subsection{Task 1}
@@ -223,14 +43,12 @@ Use the data provided by DBLP and ArnetMiner to analyze and model more social re
 \begin{enumerate}
 \item Yikai Wang: 
 
-For task 1, he uses several different methods to extract features for clustering (deepwalk, node2vec, LINE and metapath2vec) and use KMeans and Birch to cluster.
-
-For task 3, he uses metapath2vec to generate the vector representation of    scholar cooperation network, scholar citation network and scholar-conference network.
+In brief, he applies several methods in network representation learning and uses and expands a hierarchical representation learning algorithm(HARP) for Networks. For homogeneous networks, he mainly uses deepwalk, node2vec and LINE. For heterogeneous networks, he uses metapath2vec++. For task 1, he uses both homogeneous NRL and heterogeneous NRL methods to extract features for clustering and uses KMeans and Birch to complete the clustering task. For task 3, he uses heterogeneous NRL methods to generate the vector representation of scholar cooperation network, scholar citation network and scholar-conference network.
 \item Dan Wu:
 \item Zheng Wei:
 \end{enumerate}
 \section{methodology}
-\subsection{HARP}
+\subsection{Network Representation Learning}
 \begin{figure}[h]
 \centering
 \includegraphics[width=2.5in]{NRL}
@@ -239,68 +57,32 @@ For task 3, he uses metapath2vec to generate the vector representation of    sch
 \end{figure}
 Network is an important form of expressing the relationship between objects and objects. A key issue for the analysis of networks is to study how to reasonably represent feature information in the network. With the development of machine learning technology, feature learning for nodes in the network has become an emerging research task. Network representation learning algorithm transforms network information into low-dimensional dense real vector. 
 
-In all types of networks, one important type has attracted the attention of a large number of researchers. This network suppose all nodes in the network have the same type. For example, the nodes are all papers or all scholars. This specific network is called homogeneous network. 
+There are two types of networks in NRL, one supposes that all nodes in the network have the same type, and the other supposes that all nodes have different types. The former network is called homogeneous network and the other is called heterogeneous network.
 
-Formally, let $G=(V,E)$ be a graph, where $V$ is the set of nodes and $E$ is the set of edges. The goal of network representation learning is to develop a mapping function $\Phi:V\rightarrow R^{|V|*d},d\ll|V|$, which defines the latent representation of each node $v\in V$. There are many online learning methods for this task, like DeepWalk, Node2vec and LINE. The first two adopt short random walks to explore the local neighborhoods of nodes, while the last one is concerned with even closer relationships (nodes at most two hops away). However, there are two main disadvantages for the three methods:
+Formally, let $G=(V,E)$ be a graph, where $V$ is the set of nodes and $E$ is the set of edges. The goal of network representation learning is to develop a mapping function $\Phi:V\rightarrow R^{|V|*d},d\ll|V|$, which defines the latent representation of each node $v\in V$. Here we briefly introduce some homogeneous network learning methods and detailed introduce a heterogeneous network learning method and an optimization algorithm on all these methods.
+\subsection*{Methods for homogeneous network learning}
 \begin{enumerate}
-	\item all the models do not involve high-order graph structural information
-	\item their stochastic optimization can fall victim to poor initialization
+	\item DeepWalk:
+	
+	The idea of DeepWalk\cite{Perozzi:2014:DOL:2623330.2623732} is borrowed from word2vec. It uses short random walks to generate paths of a node, then just like word2vec, it uses the path to generate a probability of its neighbors, which could give each node a vertices in networks.
+		\item Node2vec:
+		
+		Node2vec\cite{DBLP:journals/corr/GroverL16} is an improvement for DeepWalk. In short, it regards the random walk as a searching problem. It provides a way of balancing the exploration-exploitation tradeoff that in turn leads to representations obeying a spectrum of equivalences from homophile to structural equivalence.
+	\item LINE:
+	
+	LINE\cite{tang2015line} uses another way to realize network embedding. The main idea of this method is learning a low-dimensional embedding with preserving both the first-order proximity and the second-order proximity between the vertices.
 \end{enumerate}
-Thus, we change the traditional problem into hierarchical representation learning problem. The main idea is we seek to find a graph $G_s=(V_s,E_s)$ which captures the essential structure of $G$, but is much smaller(i.e. $|V_s|\ll|V|,|E_s|\ll|E|$). It is trivial that $G_s$ is easier to embed. Since we have much less relationships, which means the mapping could be much smoother. Further more, since the $G_s$ is much smaller, the models that focus on local structure now could have a better performance on global structure's representaion.
+\subsection*{Methods for heterogeneous network learning}
+Different with homogeneous networks, heterogeneous networks involve more than one node types and relationships between the same type of nodes and/or different types of nodes. Thereafter, these networks cannot be handled by representation learning models that specifically designed for homogeneous networks. In this project, we use a heterogeneous skip-gram model, \emph{metapath2vec++}\cite{dong2017metapath2vec}, to model the heterogeneous neighborhood of a node.
 
-Our method for mulit-level graph representation learning, HARP, consists of three parts-graph coarsening, graph embedding and representation refinement.
-
-\begin{enumerate}
-	\item Graph Coarsening:
-	
-	Given a graph $G$, graph coarsening algorithms create a hierarchy of successively smaller graphs $G_0,G_1,\ldots,G_L$, where $G_0=G$. The coarser graphs preserve the global structure of the original graph and have much fewer nodes and edges.
-	\item Graph Embedding on the Coarsest Graph:
-	
-	Using provided network embedding algorithms to to graph embedding.(DeepWalk, Node2vec, LINE, etc.)
-	\item Graph Representation Prolongation and Refinement:
-	
-	We prolong and refine the graph representation from the coarsest to the finest graph. For each graph $G_i$, we use the graph representation of $G_{i+1}$ as its initial embedding and refine the graph embedding.
-\end{enumerate}
-The complete algorithm is expressed as follows:
-\begin{algorithm}[h]
-  \caption{HARP(G,Embed())}  
-  \KwIn{network $G=(V,E)$, arbitrary network embedding algorithm EMBED()}  
-  \KwOut{ node embeddings $\Phi\in R^{|V|*d}$}  
-  $G_0,G_1,\ldots,G_L\leftarrow$GRAPHCOARSENING(G)\;  
-  Initial $\Phi_{G_L}^{'}$ by assigning zeros\;
-  $\Phi_{G_L}\leftarrow EMBED(G_L,\Phi_{G_L}^{'})$
-  \For{$i=L-1;i \geq 0$}  
-  {$\Phi_{G_i}^{'}\leftarrow PROLONGATE(\Phi_{G_{i+1}},G_{i+1},G_i)$\;
-  $\Phi_{G_i}\leftarrow EMBED(G_i,\Phi_{G_i}^{'})$
-  }
-  return $\Phi_{G_0}$\;
-  
-  \textbf{GraphGoarsening}($G(V,E)$)
-  $L\leftarrow 0$\;
-  $G_0\leftarrow G$\;
-  \While{$|V_L|\geq threshold$}{
-  $L\leftarrow L+1$\;
-  $G_L\leftarrow$EDGECOLLAPSE(STARCOLLAPSE(G))\;}
-  return $G_0,G_1,\ldots,G_L$\;
-\end{algorithm}  
-In the algorithm, \textbf{Edge Collapse} is an algorithm for preserving first-order proximity when coarsening the network. For edges $E$, it will select $E^{'}\subset E$, satisfying no two edges in the subset are incident to the same vertex. That is, for each $(u_i,v_i)\in E^{'}$, it merges the pairs into a single node $w_i$, and merge the edges incident to $u_i$ and $v_i$. \textbf{Star Collapsing} is an algorithm for preserving second-order proximity when coarsening the network. It will merges nodes with the same neighbors into supernodes. For example, in the Figure \ref{fig_HARP},$(v_1,v_2),(v_3,v_4)$ and $(v_5,v_6)$ are merged into supernodes as they share the same neighbors $(v_7)$.
-\begin{figure}[h]
-\centering
-\includegraphics[width=2.5in]{HARP}
-\caption{Illustration of graph coarsening algorithms}
-\label{fig_HARP}
-\end{figure}
-\subsection{metapath2vec++}
-Different with homogeneous networks, heterogeneous networks involve more than one node types and relationships between the same type of nodes and/or different types of nodes. Thereafter, these networks cannot be handled by representation learning models that specifically designed for homogeneous networks. In this paper, we use a heterogeneous skip-gram model, $metapath2vec++$, to model the heterogeneous neighborhood of a node.
-
-Specifically, in metapath2vec++, we enable skip-gram to learn effective node representations for a heterogeneous network $G=(V,E,T)$ with $|T_V|>1$ by maximizing the probability of having the heterogeneous context $N_t(v),t\in T_V$ given a node $v$:
+Specifically, in \emph{metapath2vec++}, we enable skip-gram to learn effective node representations for a heterogeneous network $G=(V,E,T)$ with $|T_V|>1$ by maximizing the probability of having the heterogeneous context $N_t(v),t\in T_V$ given a node $v$:
 \begin{equation}
 	arg max_{\theta}\sum_{v\in V}\sum_{t\in T_V}\sum_{c_t\in N_t(v)} log p(c_t|v;\theta)
 \label{equ:argmax}
 \end{equation}
 where $N_t(v)$ denotes $v$'s neighborhood with the $t^{th}$ types of nodes and $p(c_t|v;\theta)$ is commonly defined as a softmax function, that is: $p(c_t|v;\theta)=\frac{exp\{X_{c_t}*X_v\}}{\sum_{u_t\in V_t}exp\{X_{u_t}*X_v\}}$, where $X_v$ is the $v^{th}$ row of $X$, representing the embedding vector for node $v$. $V_t$ is the node set of type $t$ in the network.
 
-However, the method will cost a terrible long time. To solve the problem, negative sampling was introduced by Mikolov et al. Using this method, we just need to sample a small set of nodes from the network in order to construct softmax. Specifically, given a negative sample size $M$, we use following method to update Equation \ref{equ:argmax}:
+However, the method will cost a terrible long time. To solve the problem, negative sampling was introduced by Mikolov et al\cite{mikolov2013distributed}. Using this method, we just need to sample a small set of nodes from the network in order to construct softmax. Specifically, given a negative sample size $M$, we use following method to update Equation \ref{equ:argmax}:
 \begin{equation}
 log \sigma(X_{c_t}*X_v)+\sum_{m=1}^M E_{u_t^m\sim P_t(u_t)}[log \sigma(-X_{u_t^M}*X_v)]
 \label{equ:OX}
@@ -353,148 +135,161 @@ The complete algorithm is expressed as follows:
   $c_t=MP[j]$\;
   $X^{new}=X^{old}-\eta \frac{\partial O(X)}{\partial X}$(Eq. \ref{equ:gradient}\;}}
 \end{algorithm}  
-\section{Task 1}
-\section{Task 2}
-\section{Task 3}
-% An example of a floating figure using the graphicx package.
-% Note that \label must occur AFTER (or within) \caption.
-% For figures, \caption should occur after the \includegraphics.
-% Note that IEEEtran v1.7 and later has special internal code that
-% is designed to preserve the operation of \label within \caption
-% even when the captionsoff option is in effect. However, because
-% of issues like this, it may be the safest practice to put all your
-% \label just after \caption rather than within \caption{}.
-%
-% Reminder: the "draftcls" or "draftclsnofoot", not "draft", class
-% option should be used if it is desired that the figures are to be
-% displayed while in draft mode.
-%
-%\begin{figure}[!t]
-%\centering
-%\includegraphics[width=2.5in]{myfigure}
-% where an .eps filename suffix will be assumed under latex, 
-% and a .pdf suffix will be assumed for pdflatex; or what has been declared
-% via \DeclareGraphicsExtensions.
-%\caption{Simulation results for the network.}
-%\label{fig_sim}
-%\end{figure}
+\subsection*{HARP}
+The network embedding method we introduced above is very useful in some situations.
+ However, there are two main disadvantages for these methods:
+\begin{enumerate}
+	\item all the models do not involve high-order network structural information
+	\item their stochastic optimization can fall victim to poor initialization
+\end{enumerate}
+Thus, we change the traditional problem into hierarchical representation learning problem. The main idea is we seek to find a graph $G_s=(V_s,E_s)$ which captures the essential structure of $G$, but is much smaller(i.e. $|V_s|\ll|V|,|E_s|\ll|E|$). It is trivial that $G_s$ is easier to embed. Since we have much less relationships, which means the mapping could be much smoother. Further more, since the $G_s$ is much smaller, the models that focus on local structure now could have a better performance on global structure's representation.
 
-% Note that the IEEE typically puts floats only at the top, even when this
-% results in a large percentage of a column being occupied by floats.
+Our method for multilevel network representation learning, HARP\cite{chen2017harp}, consists of three parts-graph coarsening, graph embedding and representation refinement.
 
+\begin{enumerate}
+	\item Graph Coarsening:
+	
+	Given a graph $G$, graph coarsening algorithms create a hierarchy of successively smaller graphs $G_0,G_1,\ldots,G_L$, where $G_0=G$. The coarser graphs preserve the global structure of the original graph and have much fewer nodes and edges.
+	\item Graph Embedding on the Coarsest Graph:
+	
+	Using provided network embedding algorithms to to graph embedding.(DeepWalk, Node2vec, LINE, etc.)
+	\item Graph Representation Prolongation and Refinement:
+	
+	We prolong and refine the graph representation from the coarsest to the finest graph. For each graph $G_i$, we use the graph representation of $G_{i+1}$ as its initial embedding and refine the graph embedding.
+\end{enumerate}
+The complete algorithm is expressed as follows:
+\begin{algorithm}[h]
+  \caption{HARP(G,Embed())}  
+  \KwIn{network $G=(V,E)$, arbitrary network embedding algorithm EMBED()}  
+  \KwOut{ node embeddings $\Phi\in R^{|V|*d}$}  
+  $G_0,G_1,\ldots,G_L\leftarrow$GRAPHCOARSENING(G)\;  
+  Initial $\Phi_{G_L}^{'}$ by assigning zeros\;
+  $\Phi_{G_L}\leftarrow EMBED(G_L,\Phi_{G_L}^{'})$
+  \For{$i=L-1;i \geq 0$}  
+  {$\Phi_{G_i}^{'}\leftarrow PROLONGATE(\Phi_{G_{i+1}},G_{i+1},G_i)$\;
+  $\Phi_{G_i}\leftarrow EMBED(G_i,\Phi_{G_i}^{'})$
+  }
+  return $\Phi_{G_0}$\;
+  
+  \textbf{GraphGoarsening}($G(V,E)$)
+  $L\leftarrow 0$\;
+  $G_0\leftarrow G$\;
+  \While{$|V_L|\geq threshold$}{
+  $L\leftarrow L+1$\;
+  $G_L\leftarrow$EDGECOLLAPSE(STARCOLLAPSE(G))\;}
+  return $G_0,G_1,\ldots,G_L$\;
+\end{algorithm}  
 
-% An example of a double column floating figure using two subfigures.
-% (The subfig.sty package must be loaded for this to work.)
-% The subfigure \label commands are set within each subfloat command,
-% and the \label for the overall figure must come after \caption.
-% \hfil is used as a separator to get equal spacing.
-% Watch out that the combined width of all the subfigures on a 
-% line do not exceed the text width or a line break will occur.
-%
-%\begin{figure*}[!t]
-%\centering
-%\subfloat[Case I]{\includegraphics[width=2.5in]{box}%
-%\label{fig_first_case}}
-%\hfil
-%\subfloat[Case II]{\includegraphics[width=2.5in]{box}%
-%\label{fig_second_case}}
-%\caption{Simulation results for the network.}
-%\label{fig_sim}
-%\end{figure*}
-%
-% Note that often IEEE papers with subfigures do not employ subfigure
-% captions (using the optional argument to \subfloat[]), but instead will
-% reference/describe all of them (a), (b), etc., within the main caption.
-% Be aware that for subfig.sty to generate the (a), (b), etc., subfigure
-% labels, the optional argument to \subfloat must be present. If a
-% subcaption is not desired, just leave its contents blank,
-% e.g., \subfloat[].
+In the algorithm, \textbf{Edge Collapse} is an algorithm for preserving first-order proximity when coarsening the network. For edges $E$, it will select $E^{'}\subset E$, satisfying no two edges in the subset are incident to the same vertex. That is, for each $(u_i,v_i)\in E^{'}$, it merges the pairs into a single node $w_i$, and merge the edges incident to $u_i$ and $v_i$. \textbf{Star Collapse} is an algorithm for preserving second-order proximity when coarsening the network. It will merges nodes with the same neighbors into super-nodes. For example, in the Figure \ref{fig_HARP},$(v_1,v_2),(v_3,v_4)$ and $(v_5,v_6)$ are merged into super-nodes as they share the same neighbors $(v_7)$.
+\begin{figure}[h]
+\centering
+\includegraphics[width=2.5in]{HARP}
+\caption{Illustration of graph coarsening algorithms}
+\label{fig_HARP}
+\end{figure}
 
+It is worth mentioning that in the model of HARP, they just consider homogeneous networks. However, without much modify, it can be used in heterogeneous networks, too. Specifically, in the algorithm, we first do star collapse and then do edge collapse. For a heterogeneous network, since the edges are mostly between two different types of nodes, we could find that similar nodes with the same type will be regard as the same super-node, which is just what we hope to happen.
+\section{Experiment}
+\subsection{Data Set}
+Our data are selected from Arnetminer\cite{tang2008arnetminer}. We choose all papers published on 21 conferences until 2017. A summary of our data are shown in Table \ref{data}:
+\begin{table*}[h]
+\center
+	\begin{tabular}{c|c|c|c}
+	\hline
+	\textbf{Field} & \textbf{Conferences} & \textbf{Number of Papers}&\textbf{Number of scholars}\\
+	\hline
+	Distributed \& Parallel Computing & PPOPP,PACT,IPDPS,ICPP & Number of Papers&Number of scholars\\
+	\hline
+	Natural Language Processing & ACL,EACL,COLING, EMNLP &&\\
+	\hline
+	Data Mining & ICDE,SIGMOD,KDD,ICDM&&\\
+	\hline
+	Computer Education & AIED,ITS,ICALT&&\\
+	\hline
+	Machine Learning &IJCAI,ICML,NIPS&&\\
+	\hline
+	Operating Systems \& Simulations & MASCOTS,SOSP,OSDI&&\\
+	\hline
+	\end{tabular}
+	\caption{A summary of data.}
+	\label{data}
+\end{table*}
+\subsection{Task 1}
+The first part of task 1 is clustering. We need to cluster all the papers with the information involving authors' names, references, title, abstract and year. We tried several methods to make use of the information. Specifically, word2vec uses title and abstract to generate a vector. DeepWalk and LINE uses the citation relationship of papers. Metapath2vec++ regards papers and authors as node and generate vectors. The accuracy of our methods are shows in Table \ref{task1cluster}. From the result we could find that the information between papers and authors are more important the relationship between papers and papers. Further, our HARP model could improve the accuracy of about 5 percent. It also shows that KMeans is better than Birch in some sense. And word2vec seems useless from our result.
+\begin{table}[h]
+\center
+	\begin{tabular}{c|c|c}
+	\hline
+	\hline
+	\textbf{Model/Cluster Algorithm}& KMeans & Birch\\
+	\hline
+	\hline
+	word2vec&44.25\%&45.13\%\\
+	\hline
+	DeepWalk &53.08\%&53.85\%\\
+	\hline
+	LINE&50.44\%&38.82\%\\
+	\hline
+	metapath2vec++&66.39\%&59.69\%\\
+	\hline
+	HARP(metapath\&DeepWalk)&\textbf{71.66\%}&61.24\%\\
+	\hline
+	HARP(metapath\&line)&67.05\%&53.49\%\\
+	\hline
+	DeepWalk+word2vec&52.26\%&52.24\%\\
+	\hline
+	LINE+word2vec&51.21\%&36.77\%\\
+	\hline
+	(metapath2vec++)+word2vec&49.88\%&58.12\%\\
+	\hline
+	HARP(metapath\&DeepWalk)+word2vec&51.72\%&55.39\%\\
+	\hline
+	HARP(metapath\&line)+word2vec&60.55\%&53.15\%\\
+	\hline
+	\hline
+	\end{tabular}	
+	\caption{Accuracy of models in clustering task.}
+	\label{task1cluster}
+\end{table}
+\subsection{Task 2}
+\subsection{Task 3}
+For this task, we construct several networks. A trivial idea is that we use the whole network, which involves edges between papers and papers(reference), papers and authors, papers and conferences. Another idea is just consider the relationship we want to survey. In the cooperation task, we just construct a network which involves edges between papers and authors. In the citation task, we just construct a network which involves edges between papers and papers, papers and authors. And in publish task, we just construct a network with edges involve relationship between authors and conferences.
 
-% An example of a floating table. Note that, for IEEE style tables, the
-% \caption command should come BEFORE the table and, given that table
-% captions serve much like titles, are usually capitalized except for words
-% such as a, an, and, as, at, but, by, for, in, nor, of, on, or, the, to
-% and up, which are usually not capitalized unless they are the first or
-% last word of the caption. Table text will default to \footnotesize as
-% the IEEE normally uses this smaller font for tables.
-% The \label must come after \caption as always.
-%
-%\begin{table}[!t]
-%% increase table row spacing, adjust to taste
-%\renewcommand{\arraystretch}{1.3}
-% if using array.sty, it might be a good idea to tweak the value of
-% \extrarowheight as needed to properly center the text within the cells
-%\caption{An Example of a Table}
-%\label{table_example}
-%\centering
-%% Some packages, such as MDW tools, offer better commands for making tables
-%% than the plain LaTeX2e tabular which is used here.
-%\begin{tabular}{|c||c|}
-%\hline
-%One & Two\\
-%\hline
-%Three & Four\\
-%\hline
-%\end{tabular}
-%\end{table}
+To quantify the accuracy of prediction algorithms. We use a method called area under the receiver operating characteristic curve(AUC)\cite{lu2011link}. 
+\subsubsection*{Definition of AUC}
+Provided the rank of all non-observed links, the AUC values can be interpreted as the probability that a randomly chosen missing link is given a higher score than a randomly chosen nonexistent link. To save time, we calculate the score of each non-observed link instead of giving the ordered list. At each time, we randomly pick a missing link and a nonexistent link to compare their scores. If among n independent comparisons, there are $n_1$ times the missing link having a higher score and $n_2$ times they have the same score, the AUC value is:
+\begin{equation}
+AUC=\frac{n_1+0.5n_2}{n}
+\end{equation}
+If all the scores are generated from an independent and identical distribution, the AUC value should be about 0.5. Thereafter, the degree to which the value exceeds 0.5 indicates how much better the algorithm performs than pure chance.
 
-
-% Note that the IEEE does not put floats in the very first column
-% - or typically anywhere on the first page for that matter. Also,
-% in-text middle ("here") positioning is typically not used, but it
-% is allowed and encouraged for Computer Society conferences (but
-% not Computer Society journals). Most IEEE journals/conferences use
-% top floats exclusively. 
-% Note that, LaTeX2e, unlike IEEE journals/conferences, places
-% footnotes above bottom floats. This can be corrected via the
-% \fnbelowfloat command of the stfloats package.
-
-
-
-
-
-
-% conference papers do not normally have an appendix
-
-
-% use section* for acknowledgment
-
-
-% trigger a \newpage just before the given reference
-% number - used to balance the columns on the last page
-% adjust value as needed - may need to be readjusted if
-% the document is modified later
-%\IEEEtriggeratref{8}
-% The "triggered" command can be changed if desired:
-%\IEEEtriggercmd{\enlargethispage{-5in}}
-
-% references section
-
-% can use a bibliography generated by BibTeX as a .bbl file
-% BibTeX documentation can be easily obtained at:
-% http://mirror.ctan.org/biblio/bibtex/contrib/doc/
-% The IEEEtran BibTeX style support page is at:
-% http://www.michaelshell.org/tex/ieeetran/bibtex/
-%\bibliographystyle{IEEEtran}
-% argument is your BibTeX string definitions and bibliography database(s)
-%\bibliography{IEEEabrv,../bib/paper}
-%
-% <OR> manually copy in the resultant .bbl file
-% set second argument of \begin to the number of references
-% (used to reserve space for the reference number labels box)
-\begin{thebibliography}{1}
-
-\bibitem{IEEEhowto:kopka}
-H.~Kopka and P.~W. Daly, \emph{A Guide to \LaTeX}, 3rd~ed.\hskip 1em plus
-  0.5em minus 0.4em\relax Harlow, England: Addison-Wesley, 1999.
-
-\end{thebibliography}
-
-
-
-
-% that's all folks
+In our experiments, we use the cosine distance between two vectors as the score of two nodes. The result is shown in Table \ref{AUC}
+\begin{table}[h]
+\center
+\begin{tabular}{c|c|c|c}
+\hline
+\hline
+\textbf{Model/task} & \textbf{cooperation} & \textbf{citation} & \textbf{publish}\\
+\hline
+\hline
+metapath2vec++ &75.39\%&66.92\%&77.86\%\\
+\hline
+HARP(DeepWalk)&83.38\%&\textbf{87.80 \%}&87.76\%\\
+\hline
+HARP(LINE)&83.73\%&76.93\%& 67.32\%\\
+\hline
+HARP(DeepWalk)(whole net)& \textbf{85.72\%}&85.30\%&\textbf{88.50\%}\\
+\hline
+HARP(LINE)(whole net)&56.86\%&56.43\%& 54.81\%\\
+\hline
+\hline
+\end{tabular}
+\caption{AUC of task3}
+\label{AUC}
+\end{table}
+\section{Conclusion and Discussion}
+\bibliographystyle{IEEEtran}
+\bibliography{report}
 \end{document}
 
 
