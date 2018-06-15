@@ -3,20 +3,23 @@
 """
 @author: Yikai Wang
 """
-import numpy as np
 import json
-import random
 
 def load_json(dir):
-   data = []
-   with open(dir, 'r') as f:
+    """
+    load json file
+    :param dir: path we save the data
+    :return: data as a list.
+    """
+    data = []
+    with open(dir, 'r') as f:
        while True:
            a = f.readline()
            if not a:
                break
            b = json.loads(a)
            data.append(b)
-   return data
+    return data
 
 papers = load_json('allpaper.txt')
 author2num = dict()
