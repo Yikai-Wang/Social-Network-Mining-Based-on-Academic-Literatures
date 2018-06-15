@@ -3,20 +3,24 @@
 """
 @author: Yikai Wang
 """
-import numpy as np
 import json
 import random
 
 def load_json(dir):
-   data = []
-   with open(dir, 'r') as f:
+    """
+    load json file
+    :param dir: path we save the data
+    :return: data as a list.
+    """
+    data = []
+    with open(dir, 'r') as f:
        while True:
            a = f.readline()
            if not a:
                break
            b = json.loads(a)
            data.append(b)
-   return data
+    return data
 
 papers = load_json('allpaper.txt')
 train_paper2author = dict()
@@ -38,6 +42,7 @@ for pa in papers:
                 train_author2paper[tmp_au] = []
             train_author2paper[tmp_au].append(tmp_id)
 
+#generate random path.
 numwalks = 40
 walklength = 10
 outfilename = 'task3cp.w40.l10.txt'
