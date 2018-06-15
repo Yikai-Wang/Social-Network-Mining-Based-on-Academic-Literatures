@@ -11,26 +11,35 @@ ed_conf = ['AIED', 'ITS', 'ICALT']
 nl_conf = ['ACL','EACL' , 'COLING', 'EMNLP']
 os_conf = ['MASCOTS', 'SOSP', 'OSDI']
 
-import numpy as np
+
 import pickle
 import json
 
 def load_pickle():
-   pkl_file = open('cluster_Birch_nrl.pkl', 'rb')
-   data1 = pickle.load(pkl_file)
-   pkl_file.close()
-   return data1
+    """
+    load pkl file.
+    :return: data as a dictionary.
+    """
+    pkl_file = open('cluster_Birch_nrl.pkl', 'rb')
+    data1 = pickle.load(pkl_file)
+    pkl_file.close()
+    return data1
 
 def load_json(dir):
-   data = []
-   with open(dir, 'r') as f:
+    """
+    load json file
+    :param dir: path we save the data
+    :return: data as a list.
+    """
+    data = []
+    with open(dir, 'r') as f:
        while True:
            a = f.readline()
            if not a:
                break
            b = json.loads(a)
            data.append(b)
-   return data
+    return data
 
 papers = []
 meetings = dp_conf+ml_conf+dm_conf+ed_conf+nl_conf+os_conf
