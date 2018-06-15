@@ -11,6 +11,17 @@ import json
 from argparse import ArgumentParser,ArgumentDefaultsHelpFormatter
 
 def AUC(task,nonexist,authors,times,node_vector,missing_edges,confs=None):
+    """
+    Compute sample AUC.
+    :param task: the task we need to compute,cp/re/conf
+    :param nonexist: a list which stores the location that edges doesn't exist.
+    :param authors: a list stores authors' name.
+    :param times: the number we need to sample
+    :param node_vector: a dictionary stores vector of the network, using the number as key.
+    :param missing_edges: a list store the true edges.
+    :param confs: a list stores the confs.
+    :return: AUC
+    """
     if task == 'cp' or task == 're':
         n1 = 0
         n2 = 0
@@ -63,6 +74,17 @@ def AUC(task,nonexist,authors,times,node_vector,missing_edges,confs=None):
         return result
 
 def Precision(task,nonexist,authors,L,node_vector,confs=None):
+    """
+    Compute precision.
+    :param task: the task we need to compute,cp/re/conf
+    :param nonexist: a list which stores the location that edges doesn't exist.
+    :param authors: a list stores authors' name.
+    :param L: the number we need to sample
+    :param node_vector: a dictionary stores vector of the network, using the number as key.
+    :param missing_edges: a list store the true edges.
+    :param confs: a list stores the confs.
+    :return: precision
+    """
     if task == 'cp':
         k = 0
         non_observed_edges = []
@@ -133,12 +155,22 @@ def Precision(task,nonexist,authors,L,node_vector,confs=None):
 
 
 def load_pickle(path):
+    """
+    load the dictionary data
+    :param path: the path we save the data.
+    :return: data as a dictionary.
+    """
     pkl_file = open(path, 'rb')
     data = pickle.load(pkl_file)
     pkl_file.close()
     return data
 
 def load_txt(path):
+    """
+    load txt file
+    :param path: the path we save the data.
+    :return: data as a list.
+    """
     with open(path,'r') as f:
         data = []
         while True:
@@ -150,6 +182,11 @@ def load_txt(path):
     return data
 
 def load_txt_1(filename):
+    """
+    another function to load txt file.
+    :param filename: the path we save the data.
+    :return: data as a list.
+    """
     txt = {}
     with open(filename,'r') as f:
         while True:
@@ -161,15 +198,20 @@ def load_txt_1(filename):
     return txt
 
 def load_json(dir):
-   data = []
-   with open(dir, 'r') as f:
+    """
+    load json file
+    :param dir: path we save the data.
+    :return: data as a list.
+    """
+    data = []
+    with open(dir, 'r') as f:
        while True:
            a = f.readline()
            if not a:
                break
            b = json.loads(a)
            data.append(b)
-   return data
+    return data
 parser = ArgumentParser('evaluation',
                             formatter_class=ArgumentDefaultsHelpFormatter,
                             conflict_handler='resolve')
