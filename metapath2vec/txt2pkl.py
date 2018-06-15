@@ -7,6 +7,11 @@
 import numpy as np
 import pickle
 def load_txt(filename):
+    """
+    load txt file
+    :param filename: path we save the data.
+    :return: data as a dictionary.
+    """
     txt = {}
     with open(filename,'r') as f:
         while True:
@@ -23,11 +28,22 @@ def load_txt(filename):
     return txt
 
 def write_in_pickle(data, path):
+    """
+    save the data as a pkl file
+    :param data: data we need to save
+    :param path: path we want to save
+    :return: nothing
+    """
     output = open(path, 'wb')
     pickle.dump(data, output)
     output.close()
 
 def load_pickle(path):
+    """
+    load pkl file
+    :param path: path we save the data
+    :return: data as a dictionary.
+    """
     pkl_file = open(path, 'rb')
     data = pickle.load(pkl_file)
     pkl_file.close()
