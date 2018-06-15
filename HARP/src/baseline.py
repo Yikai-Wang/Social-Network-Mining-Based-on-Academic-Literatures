@@ -1,3 +1,6 @@
+"""
+Modified by Yikai Wang
+"""
 from gensim.models import Word2Vec
 import graph_coarsening
 import numpy as np
