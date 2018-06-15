@@ -1,5 +1,7 @@
 #!/usr/bin/env python
-
+"""
+Modified by Yikai Wang
+"""
 """scoring.py: Script that demonstrates the multi-label classification used."""
 
 import copy
