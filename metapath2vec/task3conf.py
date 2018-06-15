@@ -3,7 +3,6 @@
 """
 @author: Yikai Wang
 """
-import numpy as np
 import json
 import random
 
@@ -14,15 +13,20 @@ CONFS = ['PPOPP', 'PACT', 'IPDPS', 'ICPP',
          'ACL', 'EACL', 'COLING', 'EMNLP',
          'MASCOTS', 'SOSP', 'OSDI']
 def load_json(dir):
-   data = []
-   with open(dir, 'r') as f:
+    """
+    load json file
+    :param dir: path we save the data
+    :return: data as a list.
+    """
+    data = []
+    with open(dir, 'r') as f:
        while True:
            a = f.readline()
            if not a:
                break
            b = json.loads(a)
            data.append(b)
-   return data
+    return data
 train_author2conf = dict()
 train_conf2author = dict()
 for conf in CONFS:
@@ -38,7 +42,7 @@ for conf in CONFS:
                     train_author2conf[tmp_au] = []
                 train_author2conf[tmp_au].append('v'+conf)
 
-      
+#generate random path.
 numwalks = 40
 walklength = 10
 outfilename = 'task3conf.w40.l10.txt'
