@@ -1,3 +1,6 @@
+"""
+Modified by Yikai Wang
+"""
 import magicgraph
 import logging
 import os
