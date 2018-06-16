@@ -26,10 +26,14 @@ Fudan University\\
 15300180076@fudan.edu.cn}
 \and
 \IEEEauthorblockN{Dan Wu}
-\IEEEauthorblockA{}
+\IEEEauthorblockA{School of Data Science\\
+Fudan University\\
+15300180076@fudan.edu.cn}
 \and
 \IEEEauthorblockN{Zheng Wei}
-\IEEEauthorblockA{}}
+\IEEEauthorblockA{School of Data Science\\
+Fudan University\\
+15300180076@fudan.edu.cn}}
 \maketitle
 \IEEEpeerreviewmaketitle
 \section{Task Review}
@@ -45,6 +49,13 @@ Use the data provided by DBLP and ArnetMiner to analyze and model more social re
 
 In brief, he applies several methods in network representation learning and uses and expands a hierarchical representation learning algorithm(HARP) for Networks. For homogeneous networks, he mainly uses deepwalk, node2vec and LINE. For heterogeneous networks, he uses metapath2vec++. For task 1, he uses both homogeneous NRL and heterogeneous NRL methods to extract features for clustering and uses KMeans and Birch to complete the clustering task. For task 3, he uses heterogeneous NRL methods to generate the vector representation of scholar cooperation network, scholar citation network and scholar-conference network.
 \item Dan Wu:
+\begin{enumerate}
+\item Revise the preprocessing part of word2vec model in task 1. (Stop words deleted, all words are transformed into lower case.)
+\item Build a LDA model to get the key words of each group of the papers in task 1.
+\item Use PageRank index to calculate the influence of each paper and scholar. Visualize  the citation and cooperative relationship in task 1.
+\item Visualize the ego-network in task 2.
+\item Build a baseline model for link prediction in task 3.
+\end{enumerate}
 \item Zheng Wei:
 \end{enumerate}
 \section{methodology}
@@ -189,6 +200,37 @@ In the algorithm, \textbf{Edge Collapse} is an algorithm for preserving first-or
 \end{figure}
 
 It is worth mentioning that in the model of HARP, they just consider homogeneous networks. However, without much modify, it can be used in heterogeneous networks, too. Specifically, in the algorithm, we first do star collapse and then do edge collapse. For a heterogeneous network, since the edges are mostly between two different types of nodes, we could find that similar nodes with the same type will be regard as the same super-node, which is just what we hope to happen.
+\subsection{Pagerank}
+There are ome examples of metrics used to evaluate the publication record of a scientist are the number of publications, total number of citations, the number of citations per paper, such as the i10-index and the h-index. The h-index is perhaps the most sophisticated and nuanced measure among these, since it accounts for both the quality and the quantity of a scientists’ research publications. However, many shortcomings of h-index have been pointed out creating considerable debate over the use of h-index [1-3], and many variants of h-index have been proposed to address these. However, a fundamental issue not addressed by all these metrics is that they still treat all citations equally. Yet, it is perfectly clear that a citation by a paper from a highly regarded journal, such as Nature, should be treated differently from a citation by a workshop paper or a technical report. If this does not happen, locally famous authors whose research does not have global impact but gets cited by their colleagues in their country or research circle can get rewarded. 
+
+Considering this problem, we use the pagerank-index to calculate the influence of papers and scholars, which is designed to address the drawbacks of existing indices by utilizing the underlying citation network dynamics. The index is calculated by running the well-known pagerank algorithm [4] on the evolving citation network to give scores to papers.  We use the original form of pagerank algorithm to come up with pagerank values for each publication, and the score of an author is calculated as a weighted sum of the scores of the papers he/she has written. The process has three stages: (i) computing the page-rank value of each paper in the system (each node in the citation network) (ii) assigning weighted proportions of such values to each author in the system (each node in the collaboration network) (iii) computing the author pagerank-index as a percentile. This process is illustrated by Figure \ref{fig_pagerank} .
+\begin{figure}[h]
+\centering
+\includegraphics[width=2.5in]{pagerank}
+\caption{The process of computing pagerank index.}
+\label{fig_pagerank}	
+\end{figure}
+In the first stage, publications are ranked using the page-rank algorithm as described by Larry Page and Sergei Brin [4] which can be interpreted to mimic the behavior of a random surfer in the world wide web. We use page-rank algorithm as described by Eqs \ref{equ_pagerank} where $P_i^t$ is the pagerank of node i at time t, $A_{ij}$ is the adjacency matrix of the network, $k_{out}(j)$ is the number of outgoing links from node *j *and $\alpha$ is a reset parameter. N is the number of nodes in the network.
+\begin{equation}
+	P_i^t = \frac{1-\alpha}{N}+ \alpha \sum_j \frac{A_{ij}P_j^{(t-1)}}{k_{out}(j)} 
+\label{equ_pagerank}
+\end{equation}
+The second stage of computation involves distributing this page-rank value among the respective authors of each publication. The page-rank value of the publication could be distributed equally between the authors. However, we find this distribution to be typically flawed because equal weight would be given to the first author and the last author. However the usual practice is to order the authors by the contributions they made to a certain publication. Hence, in order to maintain fairness and objectivity, we distribute the page-rank values proportionately as shown in Eqs \ref{wooden_1} and \ref{wooden_2}, where $W_d^s$ is the weight of the pagerank value assigned to a particular author (scientist) s from document d, $N^d_a$  is the number of authors of document d, whereas $R_s$ is the ‘position’ of author (scientist) s in the list of authors in document d. Further,$\rho_d$ is the pagerank value of document (node) d at steady state, and$\rho_d^s$ is the pagerank value assigned to author s from it.
+\begin{equation}
+W_d^s = \frac{N_a-R_s +1}{0.5N_a(N_a+1)}
+\label{wooden_1}
+\end{equation}
+\begin{equation}
+	\rho_d^s = W_d^s \cdot \rho_d
+\label{wooden_2}
+\end{equation}
+The final stage involves aggregating the page-rank values received by each author from each of their publications respectively, to come up with a single page-rank summation value for each author node in the collaboration network, as shown in Eqs \ref{wooden_3}.
+\begin{equation}
+\Omega_s =\sum_d \rho_d^s 
+\label{wooden_3}
+\end{equation}
+\subsection{Networkx}
+As a baseline model, We use preferential attachment model. Preferential attachment has received considerable attention as a model of the growth of net-works [6]. The basic premise is that the probability that a new edge involves node x is proportional to $|\Gamma(x)|$, the current number of neighbors of x. Newman [7] and Barabasi et al. [8] have further proposed, on the basis of empirical evidence, that the probability of co-authorship of x and y is correlated with the product of the number of collaborators of x and y. This corresponds to the measure $score(x, y) := |\Gamma(x)|*|\Gamma(y)|$. 
 \section{Experiment}
 \subsection{Data Set}
 Our data are selected from Arnetminer\cite{tang2008arnetminer}. We choose all papers published on 21 conferences until 2017. A summary of our data are shown in Table \ref{data}:
@@ -196,25 +238,63 @@ Our data are selected from Arnetminer\cite{tang2008arnetminer}. We choose all pa
 \center
 	\begin{tabular}{c|c|c|c}
 	\hline
+	\hline
 	\textbf{Field} & \textbf{Conferences} & \textbf{Number of Papers}&\textbf{Number of scholars}\\
 	\hline
-	Distributed \& Parallel Computing & PPOPP,PACT,IPDPS,ICPP & Number of Papers&Number of scholars\\
 	\hline
-	Natural Language Processing & ACL,EACL,COLING, EMNLP &&\\
+	Distributed \& Parallel Computing & PPOPP,PACT,IPDPS,ICPP & 12309&20135\\
 	\hline
-	Data Mining & ICDE,SIGMOD,KDD,ICDM&&\\
+	Natural Language Processing & ACL,EACL,COLING, EMNLP &11894&12224\\
 	\hline
-	Computer Education & AIED,ITS,ICALT&&\\
+	Data Mining & ICDE,SIGMOD,KDD,ICDM&18454&26174\\
 	\hline
-	Machine Learning &IJCAI,ICML,NIPS&&\\
+	Computer Education & AIED,ITS,ICALT&5624&8564\\
 	\hline
-	Operating Systems \& Simulations & MASCOTS,SOSP,OSDI&&\\
+	Machine Learning &IJCAI,ICML,NIPS&17200
+&20320\\
+	\hline
+	Operating Systems \& Simulations & MASCOTS,SOSP,OSDI&2100&4502\\
+	\hline
 	\hline
 	\end{tabular}
 	\caption{A summary of data.}
 	\label{data}
 \end{table*}
+\begin{table*}[h]
+\center
+	\begin{tabular}{c|c}	
+	\hline
+	\hline
+  Real Subjects & Subjects Extraction\\
+  \hline
+  \hline
+    Distributed\&Parallel System & \emph{performance}, \textbf{parallel,}
+  \emph{memory}, \textbf{distributed}, applications\\
+  \hline
+  Natural Language Processing & \textbf{language}, based, \emph{model},
+  \textbf{text}, using\\
+  \hline
+  Machine Learning & \textbf{learning}, \textbf{classification}, data,
+  \emph{training, feature}\\
+  \hline
+  Data Mining & \emph{algorithm}, \emph{model}, time, problem,
+  algorithms\\
+  \hline
+  Operating Systems / Simulations & based, \textbf{systems}, paper,
+  user, information\\
+  \hline
+  Computer Education & data, query, mining, database,
+  queries\\
+  \hline
+  \hline
+  \end{tabular}
+  
+ \caption{The Subject Extraction using LDA model.}
+ \label{LDA}
+  \end{table*}
+
 \subsection{Task 1}
+\subsubsection{Clustering}
 The first part of task 1 is clustering. We need to cluster all the papers with the information involving authors' names, references, title, abstract and year. We tried several methods to make use of the information. Specifically, word2vec uses title and abstract to generate a vector. DeepWalk and LINE uses the citation relationship of papers. Metapath2vec++ regards papers and authors as node and generate vectors. The accuracy of our methods are shows in Table \ref{task1cluster}. From the result we could find that the information between papers and authors are more important the relationship between papers and papers. Further, our HARP model could improve the accuracy of about 5 percent. It also shows that KMeans is better than Birch in some sense. And word2vec seems useless from our result.
 \begin{table}[h]
 \center
@@ -251,8 +331,44 @@ The first part of task 1 is clustering. We need to cluster all the papers with t
 	\caption{Accuracy of models in clustering task.}
 	\label{task1cluster}
 \end{table}
+\subsubsection{Subject Extraction}
+We treat the combination of the title and abstract (if any) of a paper as one document. All the documents construct a corpus, then train a LDA model on the corpus with the parameter, number of subjects, equals to 6. Compare the outcome of LDA with the real subjects of the corpus. Outcome  is shown in Table\ref{LDA}.In the table, boldfaced words
+  are relatively accurate subjects, the italics are words that relevant
+  to this subject but not general enough.
+  From table \ref{LDA} we can infer that, as a traditional method for subject extraction, LDA works well for the top 3 subjects. However, the model the last subject should be knowledge discovery in database.
+ \subsubsection{Influence Calculation ( In top10Author.xlsx)}
+ Use the PageRank index to calculate the influence of the authors, then get the top 8 authors. Compare the score we calculate and the h-index, i10 score google provides. 
+ \begin{table}[h]
+\center
+	\begin{tabular}{c|c|c|c}	
+  \hline
+  Name & Influence score & h-index & i10 score\\
+  \hline
+  \hline
+  Philip S. Yu & 68.4411 & 142 & 930\\
+  \hline
+  Jiawei Han & 65.4823 & 159 & 701\\
+  \hline
+  Michael I. Jordan & 64.1964 & 147 & 463\\
+  \hline
+  Rakesh Agrawal & 64.0368 & 100 & 264\\
+  \hline
+  Andrew Y. Ng & 61.737 & 107 & 215\\
+  \hline
+  Christopher D. Manning & 59.6019 & 103 & 288\\
+  \hline
+  Wei Wang & 42.5574 & \textbf{117} & \textbf{1299}\\
+  \hline
+  Christos Faloutsos & 42.126 & \textbf{118} &
+  \textbf{451}\\
+  \hline
+\end{tabular}
+\caption{The compareation of the index we calculate and the index google provides.}
+  \end{table}
+  We can infer that the order of scores is similar. Considering the difference in the scoring method and the inevitable drawbacks that we only use the papers published on the top summits, it is reasonable that there is some difference between the three ratings.
 \subsection{Task 2}
 \subsection{Task 3}
+The data set is divided into training set and test set, as the publish year earlier or later than 2012. Treat a scholar as a node, the co-author relationship as the edges, calculate the preferential attachment score. Sort the prediction edges by the score from high to low, collect the top 16642 edges, which is of  the same size as testing set. There are only 20 predictions that hits those in the testing set, that is to say, the precision, recall and the F1-score are 0.0012. The link prediction precision of the baseline model on the co-author relationship is low mainly due to 2 problems, the method of scoring, the occurrence of existed edges in the prediction.
 For this task, we construct several networks. A trivial idea is that we use the whole network, which involves edges between papers and papers(reference), papers and authors, papers and conferences. Another idea is just consider the relationship we want to survey. In the cooperation task, we just construct a network which involves edges between papers and authors. In the citation task, we just construct a network which involves edges between papers and papers, papers and authors. And in publish task, we just construct a network with edges involve relationship between authors and conferences.
 
 To quantify the accuracy of prediction algorithms. We use a method called area under the receiver operating characteristic curve(AUC)\cite{lu2011link}. 
