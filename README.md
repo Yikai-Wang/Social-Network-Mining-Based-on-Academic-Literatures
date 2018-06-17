@@ -32,3 +32,12 @@ In brief, he applies several methods in network representation learning and uses
 
 ## [Zheng Wei](https://github.com/WZ-ZXY)
 
+
+
+# Acknowledgements
+
+Many thanks for the following excellent open source projects:
+
+[HARP](https://github.com/GTmac/HARP)
+
+[metapath2vec](https://ericdongyx.github.io/metapath2vec/m2v.html)
