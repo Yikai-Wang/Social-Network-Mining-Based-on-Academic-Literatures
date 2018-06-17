@@ -34,6 +34,20 @@ In brief, he applies several methods in network representation learning and uses
 
 
 
+# File Structure
+
+Data-Preprocessing: include all code we use to select the data we want to use from [Aminer](https://www.aminer.cn/citation).
+
+HARP: include codes we use to realize our modified HARP model.
+
+metapath2vec: include codes we use to generate vector depending on the metapath.
+
+Task 1-3: include other codes we use to complete the task.
+
+result : include all kinds of results we achieve.
+
+You could find further information about the code with a README unde the corresponding folder.
+
 # Acknowledgements
 
 Many thanks to the following excellent open source projects:
