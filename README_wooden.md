@@ -132,17 +132,15 @@ AcademicPartnership.html: The co-author relationship graph, different color for 
 
 AcademicReferenceNetwork.html:  The citation relationship graph in NLP filed.
 
-DrawCoauthorNetwork.py: Draw the network of co-author relationship.
 
-DrawReferenceNetwork.py: Draw the network of citation network.
 
 Ego-nw-html: Folder, contains several ego-networks. The name of the file is also the name of the author.
 
 HasVenue.py: Select items with 'venue' information.
 
-LDA.py: Use LDA model to get the subjects of the papers.
 
-LinkPredictionBaseline.py: A baseline model for link prediction of co-author network.
+
+
 
 PageRank: Folder. 
 
@@ -150,7 +148,7 @@ Author_score.json: A dictionary contains the authors and their influence score.
 
 PageRank_score.json: A dictionary contains the papers and their influence score.  
 
-ProcessBar.py: Visualize a process bar to get the project progress. 
+
 
 ReducedPrediction.txt: Top 23237790 edges for link prediction in the baseline model.
 
@@ -162,11 +160,9 @@ all_conf.txt: A combination of all the papers we selected as the resource for th
 
 au2id.json: A dictionary with authors as the key, author IDs as the value.
 
-calculatePrecision.py: Calculate the precision of link prediction in the baseline model.
 
-ego-network.py: Draw ego-network. Run `python ego-network.py [Author Name]` to get the ego-network of the specific author.
 
-getTopAuthor.py: Get the top 8 authors to test whether the model works well.
+
 
 id2au.json:  A dictionary with author IDs as the key, authors as the value.
 
@@ -178,4 +174,3 @@ word2vec.model: The word2vector model trained on the corpus. The titles and abst
 
 wordvec.pkl: The paper id and corresponding vector generated.
 
-wordvector.py: An advanced version of [social_network_domain.ipynb](https://github.com/Wang-Yikai/Social-Network-Mining-Based-on-Academic-Literatures/blob/master/social_network_domain.ipynb)
