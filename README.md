@@ -36,7 +36,7 @@ In brief, he applies several methods in network representation learning and uses
 
 # Acknowledgements
 
-Many thanks for the following excellent open source projects:
+Many thanks to the following excellent open source projects:
 
 [HARP](https://github.com/GTmac/HARP)
 
