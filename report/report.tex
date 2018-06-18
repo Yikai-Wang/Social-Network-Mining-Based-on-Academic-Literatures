@@ -231,6 +231,29 @@ The final stage involves aggregating the page-rank values received by each autho
 \end{equation}
 \subsection{Networkx}
 As a baseline model, We use preferential attachment model. Preferential attachment has received considerable attention as a model of the growth of net-works \cite{mitzenmacher2004brief}. The basic premise is that the probability that a new edge involves node x is proportional to $|\Gamma(x)|$, the current number of neighbors of x. Newman \cite{newman2001clustering} and Barabasi et al. \cite{barabasi2002evolution} have further proposed, on the basis of empirical evidence, that the probability of co-authorship of x and y is correlated with the product of the number of collaborators of x and y. This corresponds to the measure $score(x, y) := |\Gamma(x)|*|\Gamma(y)|$. 
+\subsection{Sen2Vec}
+As we all know, Word2vec can use a fixed-dimensional vector to represent a word. Converting words into vectors is not enough for our task.\cite{mikolov2013efficient} However, because the data set obtained by our task is about the information of the paper, the information of the paper is often composed of short sentences such as title and abstract, so we need to use the word vector to construct the vectors of these short sentences. A straightforward and plain idea is: For each sentence, we calculate the mean of the sum, of all word vector from each word belonging to it. In this way, we can use corresponing vector to do some operations.
+\subsection{MDP}
+The Markov decision-making process is based on the historical state and makes predictions or decisions about the future state. The sequential nature of the recommendation process was noticed in the past\cite{zimdars2001using} Taking this idea one step farther, we suggest that recommendation is not simply a sequential prediction problem, but rather, a sequential decision problem. At each point the Recommender System makes a decision: which recommendation to issue. This decision should take into account the sequential process involved and the optimization criteria suitable for the recommender system, such as the profit generated from selling an item. Thus, we suggest the use of Markov decision processes(MDP)\cite{rust1994structural} , a well known stochastic model of sequential decisions.\cite{shani2005mdp} For task three, we must predict whether a scholar will send a paper or a cooperative relationship with other scholars in the future. This must be closely related to the behavior of the scholar in previous years. We will build transition matrices based on the state of scholars in previous years and make predictions about the future state of scholars. Task 3 can be divided into two subtasks: scholar-conference and scholar-scholar. We describe the algorithms for these two tasks separately below.\subsubsection{Scholar-Conference}
+We predict whether scholars will issue papers or not, which is determined by the situation of papers published by scholars in previous years. We will first select a parameter order to determine the order of the training transfer matrix, that is, for the forecast year, the year of the previous order. Let the number of conferences be n, which also represents the vector dimension of each year, a vector: $[c_1, c_2, \dots, c_{21}]$. The value at each position represents the number of papers the author sent at the conference that year. Since we only care about whether the user has presented the paper at the relevant meeting, we set all the positive numbers in the vector to 1, which means that the author published the paper at the meeting. For an author, we will train a transfer matrix that specifically corresponds to it. The dimension of this transfer matrix is $(n,n)$. It's both rows and columns represent the references' transfer, for example, if row is 3 and column is 2, it shows the third kind of conferences transfer the second kind of conferences. Each item in transfer matrix is a tuple and it contains four value, respectively $1 \rightarrow 1, 1 \rightarrow 0, 0 \rightarrow 1$, and $0 \rightarrow 0$. 
+
+After all train data has been employed to construst the transfer matrix, we need to do some calculation operations on the matrix. We should know the probability that the scholar issue paper or not. Of course, no matter what situation, the function of calculation is below:
+\[ Prob(issued) = \frac{count<issued\quad number>}{count<total\quad number>} \]
+So, each item of transfer matrix will only contain two value standing for probability.
+Now, we can predict the solution of next year using this year's data. Defind $V$ as this year's column vector, $M$ as the transfer matrix, and $V_next$ as next year's column vector. We can get:
+\[V_{next}' = V' \times M\]
+It is worth noting that above times operation is abnormal operation. we take i-th item from it as example:
+\[V'^{(i)}_{next} = V' * M[column=i]\]
+It looks like no strange, but we should know that item of $M[column=i]$ has two value. So, when we calculate the probability, we need to choose corrsponding value. In short, namely issued match 1 outherwise 0.
+\subsubsection{Scholar-Scholar}
+We predict the cooperation relationship of scholars via their historical cooperation, it's intuitive. However, considering the above prediction for scholars and conferences, it will play the role of cornerstone for consistency. So, prediction will be influenced by two factors, historical cooperation and scholar-conference's prediction. 
+
+Define $s_1, s_2$ as the two scholar and $v_1, v_2$ as the two corresponding vector, $coo(s1, s2)$ as a bool variable representing that whether they has historical cooperation. We think if two scholar has cooperated ago, then they will has more probability to continue work together. So, if there are $1$ existing in the same index of their next year's vector, we claim they will cooperate, and otherwise not. As for two scholars without cooperation, we will calculate the number of value $1$ in same index of next year's vector, and use the value to be divided by smaller value in sum of scholars' vector. Our calculation shows as the below:
+\[P_{(s_1,s_2)}=\left\{\begin{array}{ll}
+I_{\{sum(v_1 == v_2) > 0\}}&\text{$if\quad  coo(s_1, s_2)$},\\\\
+\frac{sum(v_1==v_2)}{min(sum(v_1), sum(v_2))}& otherwise.
+\end{array}\right.\]
+Of course, we need to set a threshold of probability to make the more in line with historical data, this part will be discussed in detail. Intuitively, it should take 0.5.
 \section{Experiment}
 \subsection{Data Set}
 Our data are selected from Arnetminer\cite{tang2008arnetminer}. We choose all papers published on 21 conferences until 2017. A summary of our data are shown in Table \ref{data}:
@@ -403,6 +426,98 @@ HARP(LINE)(whole net)&56.86\%&56.43\%& 54.81\%\\
 \caption{AUC of task3}
 \label{AUC}
 \end{table}
+As described ablve, we divide the all dataset in train dataset and test dataset, the seperate year is 2012. So, we predict the result from 2013 to 2017. The judging criteria used by us is to calculate the accuracy, precision, recall and F1-score. It is mainly calculated by the below confusion matrix:
+\renewcommand\arraystretch{1.5}
+\begin{table}[htbp]
+		\centering
+		\begin{tabular}{c|c|c}
+			\hline 
+			 &Predicted T & Predicted F \\ 
+			\hline 
+			Labeled T & TP & FN \\ 
+			\hline 
+			Labeled F &FP&TN\\\hline
+		\end{tabular} 
+		\caption{Confusion Matrix}
+\end{table}
+
+Accuracy: The proportion of correctly sampled samples to all samples, ie:
+\[ accuracy = \frac{TP + FN}{TP + TN + FP + FN} \]
+Precision: The proportion of correctly sampled positive samples to the total number of positive samples divided by the classifier, ie:
+\[ precision = \frac{TP}{TP + FP} \]
+
+Recall: The proportion of correctly sampled positive samples to the number of positive samples, ie:
+\[ recall = \frac{TP}{TP + FN} \]
+
+F1-score: It is the harmonic mean of precision and recall, ie:
+\[F1 = \frac{2*P*R}{P + R}\]
+
+As for predicting scholar-conference, we set order to 5 and 10 respectively, we need to compare two thing: one is whether a scholar issue paper and the another is whether a scholar issue a paper on corrsponding conference. The result shows the below:
+\renewcommand\arraystretch{1.5}
+\begin{table}[htbp]
+		\centering
+		\begin{tabular}{c|c|c}
+			\hline \hline
+			 Order & Previous 5 & Previous 10 \\ 
+			\hline 
+			Accuracy  & 0.865 & 0.844 \\
+
+			Precision & 0.299 & 0.252 \\ 
+
+			Recall    & 0.219 & 0.24 \\ 
+			
+			F1-score  &  0.237& 0.228 \\\hline
+		\end{tabular} 
+		\caption{Issue Or Not}
+\end{table}
+
+From above table, We can find the result of order taken 5 is better than  order 10 overall. It maybe shows that the situation in the last five years has a greater impact on this matter. We can also find the distance  between accuracy and other indicators is so large. I guess that the reason mainly is that the value of $TN$ is too large and predited number of $0$ has excessive proportion.\\
+
+Now, let's look at the another result as below:
+\renewcommand\arraystretch{1.5}
+\begin{table}[htbp]
+		\centering
+		\begin{tabular}{c|c|c}
+			\hline \hline
+			 Order & Previous 5 & Previous 10 \\ 
+			\hline 
+			Accuracy  & 0.991 & 0.99 \\
+
+			Precision & 0.193 & 0.162 \\ 
+
+			Recall    & 0.158 &  0.173\\ 
+			
+			F1-score  &  0.162&  0.156 \\\hline
+		\end{tabular} 
+		\caption{Hit Or Not}
+\end{table}
+We can easily find that this is very similar to the above result, although overall there is no obvious difference in the results of the different values of the two orders, but when the order takes 5, the result is always better.
+
+Let's see the prediction result of scholar-scholar as the below and il's worth nothing that we only take order as 10:
+ \renewcommand\arraystretch{1.5}
+\begin{table}[htbp]
+		\centering
+		\begin{tabular}{c|c}
+			\hline \hline
+			 Order & Previous 10 \\ 
+			\hline 
+			Accuracy  & 0.998 \\
+
+			Precision & 0.134 \\ 
+
+			Recall    &   0.006\\ 
+			
+			F1-score  &    0.012 \\\hline
+		\end{tabular} 
+		\caption{Scholar - Scholar}
+\end{table}
+Similarly, we can find that accuracy is very high, and other indicators are very low. The difference between them is larger than before. I guess the reason should be exactly the same.
+\subsection{Scholar-Conference}
+With regard to the forecast results between scholars and conferences, I think it should be noted that, as mentioned above, the proportion of TN is too large. The result of the resulting accuracy will be high, but it is imaginary and has no practical significance. From F1 we can see that this model still needs to improve its generalization ability. Of course, it is already acceptable for us to make such a result on such a small data set. If our data set gets more, I think our transfer matrix will perform better and the result will be better.
+
+In addition, we also found that the situation in the past five years has had a greater impact on a scholar's dissertation than the situation in the past decade. This seems to be in line with our intuition. After all, academic innovation is often a matter of recent years. We often seldom rely on our advantages of a decade ago to get more academic development.
+\subsection{Scholar-Scholar}
+One of the points that needs to be clarified about the predictions between scholars and scholars is that this result is greatly affected by the predictions of scholars and conferences. It can be said that the former is the vassal of the latter. So this result seems a little worse is expected. We had thought about building transition matrices for scholars and scholars. However, the mammoth matrix made us daunting. But further thinking that because the relationship between the two is inseparable, in order to ensure consistency, we use the relationship between scholars and conferences as the cornerstone of the relationship between scholars and scholars. It seems that this guarantee can be more assured, of course, the price will be the result will Looks worse.
 \section{Conclusion and Discussion}
 \bibliographystyle{IEEEtran}
 \bibliography{report}
