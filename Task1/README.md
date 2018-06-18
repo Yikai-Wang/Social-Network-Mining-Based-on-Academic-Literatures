@@ -10,7 +10,7 @@ wordvector.py: An advanced version of social_network_domain.ipynb
 
 ProcessBar.py: Visualize a process bar to get the project progress. 
 
-Naive_Clustering_Algorithm.py: Using KMeans and Birch to cluster.
+Naive_Clustering_Algorithm.py: Using KMeans and Birch to cluster. To get the result, run:  python Naive_Clustering_Algorithm.py --model line/deepwalk/node2vec/metapath2vec --mixture True/False --KMeans True/False --Birch True/False --classes 6
 
 result4cluster.py: compute the accuracy of cluster model.
 
