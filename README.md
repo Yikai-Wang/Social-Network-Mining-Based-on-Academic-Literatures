@@ -32,7 +32,7 @@ In brief, he applies several methods in network representation learning and uses
 
 ## [Zheng Wei](https://github.com/WZ-ZXY)
 
-
+In this project, his work is mainly divided into two part: For task1, he uses the word vector file to train the sentence vector of each paper, and he  is responsible for generating small data sets for testing. For task3, he uses the MDP model to train the transition matrix and predicts the relationship between scholars and conferences. Based on this, he further predict the relationship between scholars and scholars. 
 
 # File Structure
 
