@@ -41,11 +41,20 @@ metapath2vec: include codes we use to generate vector depending on the metapath.
 
 Task 1-3: include other codes we use to complete the task.
 
+Task 1:
+  
+  [DrawCoauthorNetwork.py](https://github.com/Wang-Yikai/Social-Network-Mining-Based-on-Academic-Literatures/blob/master/Task1/DrawCoauthorNetwork.py) Given all the papers and the transformation from the paper id to a number (indicating which field the paper belongs to), calculate the influence of each paper and author, plot the cooperation network among scholars. Size of the nodes represent the influence of the scholar. Color indicates the major field the scholar belongs to.
+ 
+ [DrawReferenceNetwork.py](https://github.com/Wang-Yikai/Social-Network-Mining-Based-on-Academic-Literatures/blob/master/Task1/DrawReferenceNetwork.py) Given all the papers and the transformation from the paper id to a number (indicating which field the paper belongs to), calculate the influence of each paper, plot the citation network among papers in NLP field. Size of the nodes represent the influence of the paper.
+
+[HasVenue.py](https://github.com/Wang-Yikai/Social-Network-Mining-Based-on-Academic-Literatures/blob/master/Task1/HasVenue.py) Given the original whole dataset, select those whose 'venue' infomation is not empty, then write this item into "\[venue\].txt".
+
+LDA.ipynb
+ 
+
 result : include all kinds of results we achieve.
 
-You could find further information about the code with a README under the corresponding folder.
-
-You could find a complete introduction of our project in report.pdf
+You could find further information about the code with a README unde the corresponding folder.
 
 # Acknowledgements
 
