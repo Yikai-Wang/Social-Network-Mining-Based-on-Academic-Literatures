@@ -43,7 +43,9 @@ Task 1-3: include other codes we use to complete the task.
 
 result : include all kinds of results we achieve.
 
-You could find further information about the code with a README unde the corresponding folder.
+You could find further information about the code with a README under the corresponding folder.
+
+You could find a complete introduction of our project in report.pdf
 
 # Acknowledgements
 
