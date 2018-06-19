@@ -49,8 +49,29 @@ Task 1:
 
 [HasVenue.py](https://github.com/Wang-Yikai/Social-Network-Mining-Based-on-Academic-Literatures/blob/master/Task1/HasVenue.py) Given the original whole dataset, select those whose 'venue' infomation is not empty, then write this item into "\[venue\].txt".
 
-LDA.ipynb
+[LDA.ipynb](https://github.com/Wang-Yikai/Social-Network-Mining-Based-on-Academic-Literatures/blob/master/Task1/LDA.ipynb) & 
+ [LDA.py](https://github.com/Wang-Yikai/Social-Network-Mining-Based-on-Academic-Literatures/blob/master/Task1/LDA.py)  Get the 6 main subjects of all the papers.
+
+[ProcessBar.py](https://github.com/Wang-Yikai/Social-Network-Mining-Based-on-Academic-Literatures/blob/master/Task1/ProcessBar.py) Visualize a process bar to get the project progress. 
+
+[getTopAuthor.py](https://github.com/Wang-Yikai/Social-Network-Mining-Based-on-Academic-Literatures/blob/master/Task1/getTopAuthor.py) Get the top 8 scholars, for experimental effect evaluation.
+
+[wordvector.py](https://github.com/Wang-Yikai/Social-Network-Mining-Based-on-Academic-Literatures/blob/master/Task1/wordvector.py)An advanced version of [social_network_domain.ipynb](https://github.com/Wang-Yikai/Social-Network-Mining-Based-on-Academic-Literatures/blob/master/Task1/social_network_domain.ipynb)
+
+Task 2
  
+[ego-network.py](https://github.com/Wang-Yikai/Social-Network-Mining-Based-on-Academic-Literatures/blob/master/Task2/ego-network.py)  Draw ego-network. Open the ternimal, `cd` into the directory of the file, run `python ego-network.py [Author Name]` to get the ego-network of the specific author.
+ 
+[getco-author.py](https://github.com/Wang-Yikai/Social-Network-Mining-Based-on-Academic-Literatures/blob/master/Task2/getco-author.py) Generate and save a dictionary of which the key is the name of a scholar, the value is a list containing all his coauthers. Source for task2 .
+
+
+Task 3
+
+[LinkPredictionBaseline.py](https://github.com/Wang-Yikai/Social-Network-Mining-Based-on-Academic-Literatures/blob/master/Task3/LinkPredictionBaseline.py) A baseline model for link prediction of co-author network.
+
+[calculatePrecision.py](https://github.com/Wang-Yikai/Social-Network-Mining-Based-on-Academic-Literatures/blob/master/Task3/calculatePrecision.py)  Calculate the precision of link prediction of the baseline model.
+
+
 
 result : include all kinds of results we achieve.
 
