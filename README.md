@@ -42,9 +42,9 @@ metapath2vec: include codes we use to generate vector depending on the metapath.
 Task 1-3: include other codes we use to complete the task.
 
 Task 1:
-  
+
   [DrawCoauthorNetwork.py](https://github.com/Wang-Yikai/Social-Network-Mining-Based-on-Academic-Literatures/blob/master/Task1/DrawCoauthorNetwork.py) Given all the papers and the transformation from the paper id to a number (indicating which field the paper belongs to), calculate the influence of each paper and author, plot the cooperation network among scholars. Size of the nodes represent the influence of the scholar. Color indicates the major field the scholar belongs to.
- 
+
  [DrawReferenceNetwork.py](https://github.com/Wang-Yikai/Social-Network-Mining-Based-on-Academic-Literatures/blob/master/Task1/DrawReferenceNetwork.py) Given all the papers and the transformation from the paper id to a number (indicating which field the paper belongs to), calculate the influence of each paper, plot the citation network among papers in NLP field. Size of the nodes represent the influence of the paper.
 
 [HasVenue.py](https://github.com/Wang-Yikai/Social-Network-Mining-Based-on-Academic-Literatures/blob/master/Task1/HasVenue.py) Given the original whole dataset, select those whose 'venue' infomation is not empty, then write this item into "\[venue\].txt".
@@ -59,9 +59,9 @@ Task 1:
 [wordvector.py](https://github.com/Wang-Yikai/Social-Network-Mining-Based-on-Academic-Literatures/blob/master/Task1/wordvector.py)An advanced version of [social_network_domain.ipynb](https://github.com/Wang-Yikai/Social-Network-Mining-Based-on-Academic-Literatures/blob/master/Task1/social_network_domain.ipynb)
 
 Task 2
- 
+
 [ego-network.py](https://github.com/Wang-Yikai/Social-Network-Mining-Based-on-Academic-Literatures/blob/master/Task2/ego-network.py)  Draw ego-network. Open the ternimal, `cd` into the directory of the file, run `python ego-network.py [Author Name]` to get the ego-network of the specific author.
- 
+
 [getco-author.py](https://github.com/Wang-Yikai/Social-Network-Mining-Based-on-Academic-Literatures/blob/master/Task2/getco-author.py) Generate and save a dictionary of which the key is the name of a scholar, the value is a list containing all his coauthers. Source for task2 .
 
 
@@ -75,7 +75,7 @@ Task 3
 
 result : include all kinds of results we achieve.
 
-You could find further information about the code with a README unde the corresponding folder.
+You could find further information about the code with a README under the corresponding folder and a complete introduction of our project in report.pdf.
 
 # Acknowledgements
 
