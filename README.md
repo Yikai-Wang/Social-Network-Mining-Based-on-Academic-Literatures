@@ -24,14 +24,20 @@ In brief, he applies several methods in network representation learning and uses
 
 ## [Dan Wu](https://github.com/WuDan0399)
 
-She revises the preprocessing part of word2vec model in task 1. (Stop words deleted, all words are transformed into lower case.) A LDA model is built by her to get the key words of each group of the papers in task 1. Use PageRank index to calculate the influence of each paper and scholar. Visualize  the citation and cooperative relationship in task 1.
-
-4. Visualize the ego-network in task 2.
+She revises the preprocessing part of word2vec model in task 1. (Stop words deleted, all words are transformed into lower case.) A LDA model is built by her to get the key words of each group of the papers in task 1. She uses PageRank index to calculate the influence of each paper and scholar, then visualize  the citation and cooperative relationship in task 1.
+Aisualize the ego-network in task 2.
+ Vnisualize the ego-network in task 2.
+ Voisualize the ego-network in task 2.
+ Vtisualize the ego-network in task 2.
+ Vhisualize the ego-network in task 2.
+ Verisualize the ego-network in task 2.
+ V isualize the ego-network in task 2.
+ Visualize the ego-network in task 2.
 5. Build a baseline model for link prediction in task 3.
 
 ## [Zheng Wei](https://github.com/WZ-ZXY)
 
-In this project, his work is mainly divided into two part: For task1, he uses the word vector file to train the sentence vector of each paper, and he  is responsible for generating small data sets for testing. For task3, he uses the MDP model to train the transition matrix and predicts the relationship between scholars and conferences. Based on this, he further predict the relationship between scholars and scholars. 
+In this project, his work is mainly divided into two part: For task1, he uses the word vector file to train the sentence vector of each paper, and he is responsible for generating small data sets for testing. For task3, he uses the MDP model to train the transition matrix and predicts the relationship between scholars and conferences. Based on this, he further predict the relationship between scholars and scholars. 
 
 # File Structure
 
