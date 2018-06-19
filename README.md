@@ -24,9 +24,8 @@ In brief, he applies several methods in network representation learning and uses
 
 ## [Dan Wu](https://github.com/WuDan0399)
 
-1. Revise the preprocessing part of word2vec model in task 1. (Stop words deleted, all words are transformed into lower case.)
-2. Build a LDA model to get the key words of each group of the papers in task 1.
-3. Use PageRank index to calculate the influence of each paper and scholar. Visualize  the citation and cooperative relationship in task 1.
+She revises the preprocessing part of word2vec model in task 1. (Stop words deleted, all words are transformed into lower case.) A LDA model is built by her to get the key words of each group of the papers in task 1. Use PageRank index to calculate the influence of each paper and scholar. Visualize  the citation and cooperative relationship in task 1.
+
 4. Visualize the ego-network in task 2.
 5. Build a baseline model for link prediction in task 3.
 
