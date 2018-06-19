@@ -58,6 +58,10 @@ Task 1:
 
 [wordvector.py](https://github.com/Wang-Yikai/Social-Network-Mining-Based-on-Academic-Literatures/blob/master/Task1/wordvector.py)An advanced version of [social_network_domain.ipynb](https://github.com/Wang-Yikai/Social-Network-Mining-Based-on-Academic-Literatures/blob/master/Task1/social_network_domain.ipynb)
 
+[Naive_Clustering_Algorithm.py](https://github.com/Wang-Yikai/Social-Network-Mining-Based-on-Academic-Literatures/blob/master/Task1/Naive_Clustering_Algorithm.py): Using KMeans and Birch to cluster. To get the result, run: python Naive_Clustering_Algorithm.py --model line/deepwalk/node2vec/metapath2vec --mixture True/False --KMeans True/False --Birch True/False --classes 6
+
+[result4cluster.py](https://github.com/Wang-Yikai/Social-Network-Mining-Based-on-Academic-Literatures/blob/master/Task1/result4cluster.py): compute the accuracy of cluster model.
+
 Task 2
 
 [ego-network.py](https://github.com/Wang-Yikai/Social-Network-Mining-Based-on-Academic-Literatures/blob/master/Task2/ego-network.py)  Draw ego-network. Open the ternimal, `cd` into the directory of the file, run `python ego-network.py [Author Name]` to get the ego-network of the specific author.
@@ -71,11 +75,13 @@ Task 3
 
 [calculatePrecision.py](https://github.com/Wang-Yikai/Social-Network-Mining-Based-on-Academic-Literatures/blob/master/Task3/calculatePrecision.py)  Calculate the precision of link prediction of the baseline model.
 
+[evaluation4task3.py](https://github.com/Wang-Yikai/Social-Network-Mining-Based-on-Academic-Literatures/blob/master/Task3/evaluation4task3.py): calculate AUC of our model. Run: python evaluation4task3.py --task cp/re/conf/all --AUC True/False --p True/False
 
+[MDP model for task3.ipynb](https://github.com/Wang-Yikai/Social-Network-Mining-Based-on-Academic-Literatures/blob/master/Task3/MDP%20model%20%20for%20task3.ipynb): Build the transfer matrix and do prediction on scholar-reference and scholar-scholar.
 
 result : include all kinds of results we achieve.
 
-You could find further information about the code with a README under the corresponding folder and a complete introduction of our project in report.pdf.
+You could find further information about the code with a README under the corresponding folder and a complete introduction of our project in [report](https://github.com/Wang-Yikai/Social-Network-Mining-Based-on-Academic-Literatures/blob/master/report.pdf).
 
 # Acknowledgements
 
