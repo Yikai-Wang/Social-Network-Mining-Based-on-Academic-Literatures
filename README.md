@@ -18,7 +18,7 @@ Use the data provided by DBLP and ArnetMiner to analyze and model more social re
 
 # Division of work
 
-## [Yikai Wang](https://github.com/Wang-Yikai)
+## [Yikai Wang](https://github.com/realyikaiwang)
 
 In brief, he applies several methods in network representation learning and uses and expands a hierarchical representation learning algorithm(HARP) for Networks. For homogeneous networks, he mainly uses deepwalk, node2vec and LINE. For heterogeneous networks, he uses metapath2vec++. For task 1, he uses both homogeneous NRL and heterogeneous NRL methods to extract features for clustering and uses KMeans and Birch to complete the clustering task. For task 3, he uses heterogeneous NRL methods to generate the vector representation of scholar cooperation network, scholar citation network and scholar-conference network.
 
@@ -43,45 +43,45 @@ Task 1-3: include other codes we use to complete the task.
 
 Task 1:
 
-  [DrawCoauthorNetwork.py](https://github.com/Wang-Yikai/Social-Network-Mining-Based-on-Academic-Literatures/blob/master/Task1/DrawCoauthorNetwork.py) Given all the papers and the transformation from the paper id to a number (indicating which field the paper belongs to), calculate the influence of each paper and author, plot the cooperation network among scholars. Size of the nodes represent the influence of the scholar. Color indicates the major field the scholar belongs to.
+  [DrawCoauthorNetwork.py](https://github.com/realyikaiwang/Social-Network-Mining-Based-on-Academic-Literatures/blob/master/Task1/DrawCoauthorNetwork.py) Given all the papers and the transformation from the paper id to a number (indicating which field the paper belongs to), calculate the influence of each paper and author, plot the cooperation network among scholars. Size of the nodes represent the influence of the scholar. Color indicates the major field the scholar belongs to.
 
- [DrawReferenceNetwork.py](https://github.com/Wang-Yikai/Social-Network-Mining-Based-on-Academic-Literatures/blob/master/Task1/DrawReferenceNetwork.py) Given all the papers and the transformation from the paper id to a number (indicating which field the paper belongs to), calculate the influence of each paper, plot the citation network among papers in NLP field. Size of the nodes represent the influence of the paper.
+ [DrawReferenceNetwork.py](https://github.com/realyikaiwang/Social-Network-Mining-Based-on-Academic-Literatures/blob/master/Task1/DrawReferenceNetwork.py) Given all the papers and the transformation from the paper id to a number (indicating which field the paper belongs to), calculate the influence of each paper, plot the citation network among papers in NLP field. Size of the nodes represent the influence of the paper.
 
-[HasVenue.py](https://github.com/Wang-Yikai/Social-Network-Mining-Based-on-Academic-Literatures/blob/master/Task1/HasVenue.py) Given the original whole dataset, select those whose 'venue' infomation is not empty, then write this item into "\[venue\].txt".
+[HasVenue.py](https://github.com/realyikaiwang/Social-Network-Mining-Based-on-Academic-Literatures/blob/master/Task1/HasVenue.py) Given the original whole dataset, select those whose 'venue' infomation is not empty, then write this item into "\[venue\].txt".
 
-[LDA.ipynb](https://github.com/Wang-Yikai/Social-Network-Mining-Based-on-Academic-Literatures/blob/master/Task1/LDA.ipynb) & 
- [LDA.py](https://github.com/Wang-Yikai/Social-Network-Mining-Based-on-Academic-Literatures/blob/master/Task1/LDA.py)  Get the 6 main subjects of all the papers.
+[LDA.ipynb](https://github.com/realyikaiwang/Social-Network-Mining-Based-on-Academic-Literatures/blob/master/Task1/LDA.ipynb) & 
+ [LDA.py](https://github.com/realyikaiwang/Social-Network-Mining-Based-on-Academic-Literatures/blob/master/Task1/LDA.py)  Get the 6 main subjects of all the papers.
 
-[ProcessBar.py](https://github.com/Wang-Yikai/Social-Network-Mining-Based-on-Academic-Literatures/blob/master/Task1/ProcessBar.py) Visualize a process bar to get the project progress. 
+[ProcessBar.py](https://github.com/realyikaiwang/Social-Network-Mining-Based-on-Academic-Literatures/blob/master/Task1/ProcessBar.py) Visualize a process bar to get the project progress. 
 
-[getTopAuthor.py](https://github.com/Wang-Yikai/Social-Network-Mining-Based-on-Academic-Literatures/blob/master/Task1/getTopAuthor.py) Get the top 8 scholars, for experimental effect evaluation.
+[getTopAuthor.py](https://github.com/realyikaiwang/Social-Network-Mining-Based-on-Academic-Literatures/blob/master/Task1/getTopAuthor.py) Get the top 8 scholars, for experimental effect evaluation.
 
-[wordvector.py](https://github.com/Wang-Yikai/Social-Network-Mining-Based-on-Academic-Literatures/blob/master/Task1/wordvector.py)An advanced version of [social_network_domain.ipynb](https://github.com/Wang-Yikai/Social-Network-Mining-Based-on-Academic-Literatures/blob/master/Task1/social_network_domain.ipynb)
+[wordvector.py](https://github.com/realyikaiwang/Social-Network-Mining-Based-on-Academic-Literatures/blob/master/Task1/wordvector.py)An advanced version of [social_network_domain.ipynb](https://github.com/realyikaiwang/Social-Network-Mining-Based-on-Academic-Literatures/blob/master/Task1/social_network_domain.ipynb)
 
-[Naive_Clustering_Algorithm.py](https://github.com/Wang-Yikai/Social-Network-Mining-Based-on-Academic-Literatures/blob/master/Task1/Naive_Clustering_Algorithm.py): Using KMeans and Birch to cluster. To get the result, run: python Naive_Clustering_Algorithm.py --model line/deepwalk/node2vec/metapath2vec --mixture True/False --KMeans True/False --Birch True/False --classes 6
+[Naive_Clustering_Algorithm.py](https://github.com/realyikaiwang/Social-Network-Mining-Based-on-Academic-Literatures/blob/master/Task1/Naive_Clustering_Algorithm.py): Using KMeans and Birch to cluster. To get the result, run: python Naive_Clustering_Algorithm.py --model line/deepwalk/node2vec/metapath2vec --mixture True/False --KMeans True/False --Birch True/False --classes 6
 
-[result4cluster.py](https://github.com/Wang-Yikai/Social-Network-Mining-Based-on-Academic-Literatures/blob/master/Task1/result4cluster.py): compute the accuracy of cluster model.
+[result4cluster.py](https://github.com/realyikaiwang/Social-Network-Mining-Based-on-Academic-Literatures/blob/master/Task1/result4cluster.py): compute the accuracy of cluster model.
 
 Task 2
 
-[ego-network.py](https://github.com/Wang-Yikai/Social-Network-Mining-Based-on-Academic-Literatures/blob/master/Task2/ego-network.py)  Draw ego-network. Open the ternimal, `cd` into the directory of the file, run `python ego-network.py [Author Name]` to get the ego-network of the specific author.
+[ego-network.py](https://github.com/realyikaiwang/Social-Network-Mining-Based-on-Academic-Literatures/blob/master/Task2/ego-network.py)  Draw ego-network. Open the ternimal, `cd` into the directory of the file, run `python ego-network.py [Author Name]` to get the ego-network of the specific author.
 
-[getco-author.py](https://github.com/Wang-Yikai/Social-Network-Mining-Based-on-Academic-Literatures/blob/master/Task2/getco-author.py) Generate and save a dictionary of which the key is the name of a scholar, the value is a list containing all his coauthers. Source for task2 .
+[getco-author.py](https://github.com/realyikaiwang/Social-Network-Mining-Based-on-Academic-Literatures/blob/master/Task2/getco-author.py) Generate and save a dictionary of which the key is the name of a scholar, the value is a list containing all his coauthers. Source for task2 .
 
 
 Task 3
 
-[LinkPredictionBaseline.py](https://github.com/Wang-Yikai/Social-Network-Mining-Based-on-Academic-Literatures/blob/master/Task3/LinkPredictionBaseline.py) A baseline model for link prediction of co-author network.
+[LinkPredictionBaseline.py](https://github.com/realyikaiwang/Social-Network-Mining-Based-on-Academic-Literatures/blob/master/Task3/LinkPredictionBaseline.py) A baseline model for link prediction of co-author network.
 
-[calculatePrecision.py](https://github.com/Wang-Yikai/Social-Network-Mining-Based-on-Academic-Literatures/blob/master/Task3/calculatePrecision.py)  Calculate the precision of link prediction of the baseline model.
+[calculatePrecision.py](https://github.com/realyikaiwang/Social-Network-Mining-Based-on-Academic-Literatures/blob/master/Task3/calculatePrecision.py)  Calculate the precision of link prediction of the baseline model.
 
-[evaluation4task3.py](https://github.com/Wang-Yikai/Social-Network-Mining-Based-on-Academic-Literatures/blob/master/Task3/evaluation4task3.py): calculate AUC of our model. Run: python evaluation4task3.py --task cp/re/conf/all --AUC True/False --p True/False
+[evaluation4task3.py](https://github.com/realyikaiwang/Social-Network-Mining-Based-on-Academic-Literatures/blob/master/Task3/evaluation4task3.py): calculate AUC of our model. Run: python evaluation4task3.py --task cp/re/conf/all --AUC True/False --p True/False
 
-[MDP model for task3.ipynb](https://github.com/Wang-Yikai/Social-Network-Mining-Based-on-Academic-Literatures/blob/master/Task3/MDP%20model%20%20for%20task3.ipynb): Build the transfer matrix and do prediction on scholar-reference and scholar-scholar.
+[MDP model for task3.ipynb](https://github.com/realyikaiwang/Social-Network-Mining-Based-on-Academic-Literatures/blob/master/Task3/MDP%20model%20%20for%20task3.ipynb): Build the transfer matrix and do prediction on scholar-reference and scholar-scholar.
 
 result : include all kinds of results we achieve.
 
-You could find further information about the code with a README under the corresponding folder and a complete introduction of our project in [report](https://github.com/Wang-Yikai/Social-Network-Mining-Based-on-Academic-Literatures/blob/master/report.pdf).
+You could find further information about the code with a README under the corresponding folder and a complete introduction of our project in [report](https://github.com/realyikaiwang/Social-Network-Mining-Based-on-Academic-Literatures/blob/master/report.pdf).
 
 # Acknowledgements
 
